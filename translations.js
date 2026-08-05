@@ -88,6 +88,10 @@ const translations = {
         title: "Flight Booking",
         desc: "A full-stack airline reservation system with online booking, check-in, admin panel and machine learning based passenger prediction. (I am currently working on it)",
       },
+      meeting: {
+        title: "Meeting App",
+        desc: "MeetingApp is a user management application that allows users to register and view the total number of registered members.",
+      },
       viewRepo: "View Repository",
     },
     focus: {
@@ -230,6 +234,10 @@ const translations = {
       flight: {
         title: "Flight Booking",
         desc: "Onlayn bilet sifarişi, Check-in, Admin Paneli və Machine Learning sərnişin proqnozlaşdırması olan tam funksional aviaşirkət sistemi. (Hal-hazırda üzərində işləyirəm)",
+      },
+      meeting: {
+        title: "Meeting App",
+        desc: "MeetingApp istifadəçilərə qeydiyyatdan keçməyə və qeydiyyatdan keçmiş üzvlərin ümumi sayını görməyə imkan verən istifadəçi idarəetmə tətbiqidir.",
       },
       viewRepo: "Repository-ə Bax",
     },
