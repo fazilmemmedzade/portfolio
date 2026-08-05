@@ -43,6 +43,12 @@ const PROJECTS = [
     url: "https://github.com/fazilmmmdzad/FlightBooking",
     tech: ["C#", "HTML", "CSS", "JavaScript", "Bootstrap","MVC", "MongoDB", "ML.NET", "Llama integration with API"],
   },
+  {
+    key: "meeting",
+    repo: "Meeting App",
+    url: "https://github.com/fazilmmmdzad/MeetingApp",
+    tech: ["C#", "HTML", "CSS", "Bootstrap", "MVC"],
+  }
 ];
 
 const WORKFLOW_KEYS = ["schema", "backend", "interface", "refine"];
