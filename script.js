@@ -551,7 +551,7 @@ function initNetwork() {
           dy = points[i].y - points[j].y;
         const dist = Math.sqrt(dx * dx + dy * dy);
         if (dist < 130) {
-          ctx.strokeStyle = `rgba(79,227,154,${1 - dist / 130})`;
+          ctx.strokeStyle = `rgba(255,107,107,${1 - dist / 130})`;
           ctx.lineWidth = 0.6;
           ctx.beginPath();
           ctx.moveTo(points[i].x, points[i].y);
@@ -559,7 +559,7 @@ function initNetwork() {
           ctx.stroke();
         }
       }
-      ctx.fillStyle = "rgba(79,227,154,0.7)";
+      ctx.fillStyle = "rgba(255,107,107,0.7)";
       ctx.beginPath();
       ctx.arc(points[i].x, points[i].y, 1.6, 0, Math.PI * 2);
       ctx.fill();
