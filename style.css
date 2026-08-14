@@ -5,17 +5,17 @@
 
 :root {
   --bg: #06090A;
-  --bg-soft: #0A0F0D;
-  --surface: #0F1512;
-  --surface-2: #161D18;
-  --border: #212B24;
+  --bg-soft: #0F0A0A;
+  --surface: #151010;
+  --surface-2: #1D1616;
+  --border: #2B2121;
   --text: #ECF1EC;
-  --text-muted: #93A398;
-  --text-dim: #5E6E64;
+  --text-muted: #A39393;
+  --text-dim: #6E5E5E;
 
-  --accent: #2FBE7C;
-  --accent-bright: #4FE39A;
-  --accent-dim: #0F3322;
+  --accent: #E53935;
+  --accent-bright: #FF6B6B;
+  --accent-dim: #3A1010;
   --accent-warm: #E8A15C;
   --accent-warm-dim: #3A2A16;
 
@@ -36,13 +36,13 @@ html[data-theme="light"] {
   --surface: #FFFFFF;
   --surface-2: #F1F5F2;
   --border: #DBE4DD;
-  --text: #0E140F;
-  --text-muted: #56655B;
-  --text-dim: #8A968E;
+  --text: #140E0E;
+  --text-muted: #655656;
+  --text-dim: #968A8A;
 
-  --accent: #16824E;
-  --accent-bright: #1F8A52;
-  --accent-dim: #E3F2E9;
+  --accent: #C62828;
+  --accent-bright: #D32F2F;
+  --accent-dim: #FDE7E7;
   --accent-warm: #B9722E;
   --accent-warm-dim: #F5E7D5;
   color-scheme: light;
@@ -73,7 +73,7 @@ body *, body *::before, body *::after {
 .font-display { font-family: var(--font-display); }
 .font-mono { font-family: var(--font-mono); }
 
-::selection { background: var(--accent); color: #06120C; }
+::selection { background: var(--accent); color: #1A0505; }
 
 a, button { -webkit-tap-highlight-color: transparent; }
 
@@ -236,7 +236,7 @@ body.cursor-active .cursor-glow { opacity: 1; }
 @keyframes rotateBorder { to { --angle: 360deg; } }
 @property --angle { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
 
-html[data-theme="light"] .term-window { box-shadow: 0 30px 80px -40px rgba(20,108,62,.2); }
+html[data-theme="light"] .term-window { box-shadow: 0 30px 80px -40px rgba(198,40,40,.2); }
 .term-line { white-space: pre; }
 .caret { display: inline-block; width: 7px; height: 15px; background: var(--accent-bright); animation: blink 1s steps(1) infinite; vertical-align: -2px; }
 @keyframes blink { 50% { opacity: 0; } }
@@ -256,7 +256,7 @@ html[data-theme="light"] .term-window { box-shadow: 0 30px 80px -40px rgba(20,10
 }
 .tilt-card:hover {
   border-color: var(--accent);
-  box-shadow: 0 24px 60px -30px rgba(47,190,124,.35);
+  box-shadow: 0 24px 60px -30px rgba(229,57,53,.35);
 }
 .tilt-card::before {
   content: '';
@@ -297,7 +297,7 @@ html[data-theme="light"] .term-window { box-shadow: 0 30px 80px -40px rgba(20,10
 #backToTop.show { opacity: 1; pointer-events: auto; }
 
 .card-hover { transition: transform .35s var(--ease-out), border-color .3s ease, box-shadow .3s ease; }
-.card-hover:hover { transform: translateY(-4px); border-color: var(--accent); box-shadow: 0 20px 45px -25px rgba(47,190,124,.3); }
+.card-hover:hover { transform: translateY(-4px); border-color: var(--accent); box-shadow: 0 20px 45px -25px rgba(229,57,53,.3); }
 
 /* Skill chips — perfectly uniform, no hierarchy */
 .skill-chip {
@@ -339,7 +339,7 @@ html[data-theme="light"] .term-window { box-shadow: 0 30px 80px -40px rgba(20,10
 }
 #workflowList .flex.gap-5:hover .step-num {
   background: var(--accent);
-  color: #06120C;
+  color: #1A0505;
   border-color: var(--accent);
   transform: scale(1.15) rotate(6deg);
 }
@@ -411,7 +411,7 @@ canvas#netCanvas { position: absolute; inset: 0; width: 100%; height: 100%; }
   transform: translateY(-6px);
   border-color: var(--accent);
   box-shadow:
-    0 28px 70px -30px rgba(47, 190, 124, 0.35),
+   0 28px 70px -30px rgba(229, 57, 53, 0.35),
     0 0 0 1px color-mix(in srgb, var(--accent) 25%, transparent);
 }
 @media (hover: none), (pointer: coarse) {
