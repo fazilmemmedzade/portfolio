@@ -28,25 +28,25 @@ const PROJECTS = [
   {
     key: "honey",
     repo: "Honey Photo",
-    url: "https://github.com/fazilmmmdzad/HoneyPhoto",
+    url: "https://github.com/fazilmemmedzade/HoneyPhoto",
     tech: ["C#", ".Net Core", "Windows Forms"],
   },
   {
     key: "temp",
     repo: "Honey Degrees",
-    url: "https://github.com/fazilmmmdzad/Temperature_Transducer",
+    url: "https://github.com/fazilmemmedzade/Temperature_Transducer",
     tech: ["C#", ".Net Framework", "Windows Forms"],
   },
   {
     key: "flight",
     repo: "Flight Booking",
-    url: "https://github.com/fazilmmmdzad/FlightBooking",
+    url: "https://github.com/fazilmemmedzade/FlightBooking",
     tech: ["C#", "HTML", "CSS", "JavaScript", "Bootstrap","MVC", "MongoDB", "ML.NET", "Llama integration with API"],
   },
   {
     key: "meeting",
     repo: "Meeting App",
-    url: "https://github.com/fazilmmmdzad/MeetingApp",
+    url: "https://github.com/fazilmemmedzade/MeetingApp",
     tech: ["C#", "HTML", "CSS", "Bootstrap", "MVC"],
   }
 ];
