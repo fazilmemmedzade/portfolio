@@ -92,6 +92,10 @@ const translations = {
         title: "Meeting App",
         desc: "MeetingApp is a user management application that allows users to register and view the total number of registered members.",
       },
+      blog: {
+        title: "Blog App",
+        desc: "A social blogging platform where users can create, share, discover, and interact with blog posts.",
+      },
       viewRepo: "View Repository",
     },
     focus: {
@@ -238,6 +242,10 @@ const translations = {
       meeting: {
         title: "Meeting App",
         desc: "MeetingApp istifadəçilərə qeydiyyatdan keçməyə və qeydiyyatdan keçmiş üzvlərin ümumi sayını görməyə imkan verən istifadəçi idarəetmə tətbiqidir.",
+      },
+      blog: {
+        title: "Blog App",
+        desc: "İstifadəçilərin bloq yazıları yarada, paylaşa, kəşf edə və onlarla qarşılıqlı əlaqədə ola bildikləri sosial bloq platforması.",
       },
       viewRepo: "Repository-ə Bax",
     },
