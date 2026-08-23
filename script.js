@@ -26,6 +26,18 @@ const SKILLS = [
 
 const PROJECTS = [
   {
+    key: "flight",
+    repo: "Flight Booking",
+    url: "https://github.com/fazilmemmedzade/FlightBooking",
+    tech: ["C#", "HTML", "CSS", "JavaScript", "Bootstrap","MVC", "MongoDB", "ML.NET", "Llama integration with API"],
+  },
+  {
+    key: "blog",
+    repo: "Blog App",
+    url: "https://github.com/fazilmemmedzade/BlogApp",
+    tech: ["C#", "HTML", "CSS", "JavaScript", "Bootstrap","MVC", "MSSQL", "Entity Framework Core"],
+  },
+  {
     key: "honey",
     repo: "Honey Photo",
     url: "https://github.com/fazilmemmedzade/HoneyPhoto",
@@ -36,12 +48,6 @@ const PROJECTS = [
     repo: "Honey Degrees",
     url: "https://github.com/fazilmemmedzade/Temperature_Transducer",
     tech: ["C#", ".Net Framework", "Windows Forms"],
-  },
-  {
-    key: "flight",
-    repo: "Flight Booking",
-    url: "https://github.com/fazilmemmedzade/FlightBooking",
-    tech: ["C#", "HTML", "CSS", "JavaScript", "Bootstrap","MVC", "MongoDB", "ML.NET", "Llama integration with API"],
   },
   {
     key: "meeting",
