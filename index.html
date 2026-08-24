@@ -1,62 +1,599 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Fazil Məmmədzadə — Full-Stack .NET Developer</title>
-<meta name="description" content="Fazil Məmmədzadə — Full-Stack .NET Developer. ASP.NET Core, React, C#, JavaScript, SQL, ERP & POS Systems." />
-<meta name="theme-color" content="#06090A" />
-<link rel="icon" type="image/png" href="icon.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fazil Məmmədzadə · Full-Stack Developer</title>
+  <meta name="description" content="Fazil Məmmədzadə — Full-Stack .NET Developer. ASP.NET Core, React, C#, JavaScript, SQL, ERP & POS Systems." />
+  <meta name="theme-color" content="#0b0a0f" />
+  <link rel="icon" type="image/png" href="icon.png" />
 
-<!-- Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 
-<!-- Tailwind -->
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-  tailwind.config = {
-    darkMode: 'class',
-    theme: {
-      extend: {
-        fontFamily: {
-          display: ['"Space Grotesk"', 'sans-serif'],
-          body: ['Inter', 'sans-serif'],
-          mono: ['"JetBrains Mono"', 'monospace'],
+  <!-- Tailwind + custom config -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['"Space Grotesk"', 'sans-serif'],
+            body: ['Inter', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            accent: '#8B5CF6',
+            'accent-bright': '#A78BFA',
+            'accent-glow': '#C084FC',
+            'accent-dim': '#2E1A47',
+            surface: '#15121A',
+            'surface-2': '#1F1A27',
+            border: '#2E283A',
+            text: '#EEF2EE',
+            'text-muted': '#B0A8B8',
+          },
         },
       },
-    },
-  };
-</script>
+    };
+  </script>
 
-<link rel="stylesheet" href="style.css">
+  <style>
+    /* ============================================================
+       RESET & BASE — NO DEFAULT CURSOR
+       ============================================================ */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: #0b0a0f;
+      color: #EEF2EE;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      cursor: none !important;
+      transition: background 0.4s ease, color 0.4s ease;
+    }
+    body, body *, body *::before, body *::after,
+    a, button, input, textarea, select, label, .nav-link, .btn-primary, .btn-outline,
+    .project-card, .cert-card, .skill-chip, .tech-tag {
+      cursor: none !important;
+    }
+    ::selection { background: #8B5CF6; color: #fff; }
+
+    /* ===== LIGHT MODE ===== */
+    html[data-theme="light"] body {
+      background: #F5F3F7;
+      color: #1A1620;
+    }
+    html[data-theme="light"] .nav-glass {
+      background: rgba(245, 243, 247, 0.85);
+      border-bottom: 1px solid rgba(139, 92, 246, 0.15);
+    }
+    html[data-theme="light"] .nav-link {
+      color: #5A4E66;
+    }
+    html[data-theme="light"] .nav-link:hover,
+    html[data-theme="light"] .nav-link.active {
+      color: #1A1620;
+    }
+    html[data-theme="light"] .card-glass {
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(139, 92, 246, 0.12);
+    }
+    html[data-theme="light"] .project-card {
+      background: rgba(255, 255, 255, 0.6);
+      border: 1px solid rgba(139, 92, 246, 0.1);
+    }
+    html[data-theme="light"] .cert-card {
+      background: rgba(255, 255, 255, 0.6);
+      border: 1px solid rgba(139, 92, 246, 0.1);
+    }
+    html[data-theme="light"] .cert-card .cert-img {
+      background: #EDE9F2;
+    }
+    html[data-theme="light"] .project-card .project-image {
+      background: #EDE9F2;
+    }
+    html[data-theme="light"] .skill-chip {
+      background: rgba(237, 233, 242, 0.7);
+      border: 1px solid rgba(139, 92, 246, 0.12);
+      color: #3A2E46;
+    }
+    html[data-theme="light"] .skill-chip:hover {
+      background: rgba(139, 92, 246, 0.12);
+      border-color: #8B5CF6;
+      color: #1A1620;
+    }
+    html[data-theme="light"] .btn-outline {
+      border-color: #D5CEE0;
+      color: #1A1620;
+    }
+    html[data-theme="light"] .btn-outline:hover {
+      border-color: #8B5CF6;
+      background: rgba(139, 92, 246, 0.06);
+    }
+    html[data-theme="light"] .bg-surface\/30 {
+      background: rgba(237, 233, 242, 0.4);
+    }
+    html[data-theme="light"] .bg-surface\/20 {
+      background: rgba(237, 233, 242, 0.2);
+    }
+    html[data-theme="light"] .text-text-muted {
+      color: #5A4E66;
+    }
+    html[data-theme="light"] .border-border {
+      border-color: #D5CEE0;
+    }
+    html[data-theme="light"] .border-dashed.border-border {
+      border-color: #D5CEE0;
+    }
+    html[data-theme="light"] footer {
+      border-color: #D5CEE0;
+    }
+    html[data-theme="light"] .terminal-wrap {
+      border-color: rgba(139, 92, 246, 0.15);
+      background: rgba(255, 255, 255, 0.5);
+    }
+    html[data-theme="light"] .blob-a,
+    html[data-theme="light"] .blob-b,
+    html[data-theme="light"] .blob-c {
+      opacity: 0.4;
+    }
+    html[data-theme="light"] .step-num {
+      background: rgba(139, 92, 246, 0.08);
+      border-color: rgba(139, 92, 246, 0.2);
+    }
+    html[data-theme="light"] .step-num:hover {
+      background: #8B5CF6;
+      color: #fff;
+    }
+    html[data-theme="light"] input,
+    html[data-theme="light"] textarea {
+      border-color: #D5CEE0;
+      color: #1A1620;
+    }
+    html[data-theme="light"] input:focus,
+    html[data-theme="light"] textarea:focus {
+      border-color: #8B5CF6;
+    }
+    html[data-theme="light"] .cert-card .cert-provider {
+      color: #8B5CF6;
+    }
+    html[data-theme="light"] .cert-card .cert-desc {
+      color: #5A4E66;
+    }
+    html[data-theme="light"] .cert-card .cert-date {
+      color: #8A7E96;
+    }
+    html[data-theme="light"] .tech-tag {
+      background: rgba(237, 233, 242, 0.6);
+      border-color: rgba(139, 92, 246, 0.12);
+      color: #3A2E46;
+    }
+
+    /* ============================================================
+       NEON GLOW — purple only, no red
+       ============================================================ */
+    .neon-border {
+      border-color: #8B5CF6;
+      box-shadow: 0 0 18px rgba(139, 92, 246, 0.3), inset 0 0 18px rgba(139, 92, 246, 0.05);
+    }
+    .neon-text {
+      color: #C084FC;
+      text-shadow: 0 0 20px rgba(192, 132, 252, 0.3), 0 0 60px rgba(139, 92, 246, 0.15);
+    }
+    .neon-glow {
+      box-shadow: 0 0 30px rgba(139, 92, 246, 0.15), 0 0 60px rgba(139, 92, 246, 0.05);
+    }
+
+    /* ============================================================
+       SCROLLBAR
+       ============================================================ */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #15121A; }
+    ::-webkit-scrollbar-thumb { background: #8B5CF6; border-radius: 12px; box-shadow: 0 0 16px #8B5CF6; }
+    html[data-theme="light"] ::-webkit-scrollbar-track { background: #EDE9F2; }
+
+    /* ============================================================
+       AMBIENT BG — NEON BLOBS
+       ============================================================ */
+    .bg-grid {
+      position: fixed; inset: 0; z-index: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(139, 92, 246, 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(139, 92, 246, 0.07) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: radial-gradient(ellipse 70% 50% at 50% 20%, black 20%, transparent 70%);
+      -webkit-mask-image: radial-gradient(ellipse 70% 50% at 50% 20%, black 20%, transparent 70%);
+    }
+    html[data-theme="light"] .bg-grid {
+      opacity: 0.3;
+    }
+    .blob {
+      position: fixed; z-index: 0; pointer-events: none;
+      border-radius: 50%;
+      filter: blur(120px);
+      will-change: transform;
+      animation: blobFloat 20s ease-in-out infinite alternate;
+    }
+    .blob-a { width: 55vw; height: 55vw; top: -25vw; left: -20vw; background: radial-gradient(circle, rgba(139,92,246,0.35), transparent 70%); animation-delay: 0s; }
+    .blob-b { width: 45vw; height: 45vw; top: 5vw; right: -15vw; background: radial-gradient(circle, rgba(168,85,247,0.25), transparent 70%); animation-delay: -6s; }
+    .blob-c { width: 40vw; height: 40vw; bottom: -10vw; left: 15vw; background: radial-gradient(circle, rgba(139,92,246,0.2), transparent 70%); animation-delay: -12s; }
+    @keyframes blobFloat {
+      0% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(30px, -40px) scale(1.1); }
+      66% { transform: translate(-20px, 30px) scale(0.9); }
+      100% { transform: translate(20px, -20px) scale(1.05); }
+    }
+
+    /* ============================================================
+       CUSTOM CURSOR
+       ============================================================ */
+    .cursor-dot, .cursor-ring, .cursor-glow {
+      position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9999;
+      transform: translate(-50%, -50%);
+      will-change: transform;
+      border-radius: 50%;
+    }
+    .cursor-dot {
+      width: 6px; height: 6px;
+      background: #C084FC;
+      box-shadow: 0 0 20px #A78BFA, 0 0 60px rgba(139,92,246,0.3);
+      transition: width 0.2s, height 0.2s;
+    }
+    .cursor-ring {
+      width: 36px; height: 36px;
+      border: 1.5px solid rgba(192, 132, 252, 0.6);
+      box-shadow: 0 0 30px rgba(139,92,246,0.2), inset 0 0 30px rgba(139,92,246,0.05);
+      transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1), height 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s;
+    }
+    .cursor-glow {
+      width: 260px; height: 260px;
+      background: radial-gradient(circle, rgba(139,92,246,0.12), transparent 70%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    body.cursor-active .cursor-glow { opacity: 1; }
+    .cursor-ring.is-hover {
+      width: 60px; height: 60px;
+      border-color: #C084FC;
+      background: rgba(139,92,246,0.08);
+      box-shadow: 0 0 50px rgba(139,92,246,0.25);
+    }
+    .cursor-dot.is-hover { opacity: 0; }
+    .cursor-ring.is-down { width: 24px; height: 24px; }
+    @media (hover: none), (pointer: coarse) {
+      .cursor-dot, .cursor-ring, .cursor-glow { display: none; }
+      body, body * { cursor: auto !important; }
+    }
+
+    /* ============================================================
+       SCROLL PROGRESS
+       ============================================================ */
+    #scrollProgress {
+      position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+      background: linear-gradient(90deg, #8B5CF6, #C084FC, #A78BFA);
+      z-index: 999; transition: width 0.08s linear;
+      box-shadow: 0 0 30px rgba(139,92,246,0.6), 0 0 60px rgba(139,92,246,0.2);
+    }
+
+    /* ============================================================
+       NAV
+       ============================================================ */
+    .nav-glass {
+      background: rgba(11, 10, 15, 0.78);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+      box-shadow: 0 4px 40px rgba(139, 92, 246, 0.06);
+      transition: background 0.4s ease, border-color 0.4s ease;
+    }
+    .nav-link {
+      position: relative;
+      color: #B0A8B8;
+      font-weight: 500;
+      transition: color 0.25s ease;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute; left: 50%; right: 50%; bottom: -2px;
+      height: 2px; border-radius: 4px;
+      background: #C084FC;
+      box-shadow: 0 0 20px #A78BFA;
+      transition: left 0.3s cubic-bezier(0.16, 1, 0.3, 1), right 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .nav-link:hover, .nav-link.active { color: #EEF2EE; text-shadow: 0 0 30px rgba(139,92,246,0.2); }
+    .nav-link:hover::after, .nav-link.active::after { left: 0; right: 0; }
+
+    /* ============================================================
+       REVEAL ANIMATION
+       ============================================================ */
+    .reveal {
+      opacity: 0; transform: translateY(40px) scale(0.97);
+      filter: blur(8px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                  filter 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      transition-delay: calc(var(--reveal-delay, 0) * 1ms);
+    }
+    .reveal.visible {
+      opacity: 1; transform: translateY(0) scale(1);
+      filter: blur(0);
+    }
+
+    /* ============================================================
+       BUTTONS — purple only
+       ============================================================ */
+    .btn-primary {
+      background: #8B5CF6;
+      color: #fff;
+      padding: 0.75rem 2rem;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 0 30px rgba(139,92,246,0.3), 0 8px 30px rgba(139,92,246,0.2);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .btn-primary:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 0 60px rgba(139,92,246,0.5), 0 14px 40px rgba(139,92,246,0.3);
+      background: #7C3AED;
+    }
+    .btn-outline {
+      border: 1px solid #2E283A;
+      color: #EEF2EE;
+      padding: 0.75rem 2rem;
+      border-radius: 12px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .btn-outline:hover {
+      border-color: #8B5CF6;
+      background: rgba(139,92,246,0.08);
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 0 30px rgba(139,92,246,0.1);
+    }
+
+    /* ============================================================
+       CARDS
+       ============================================================ */
+    .card-glass {
+      background: rgba(21, 18, 26, 0.7);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(139, 92, 246, 0.15);
+      border-radius: 20px;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 0 20px rgba(139,92,246,0.03);
+    }
+    .card-glass:hover {
+      border-color: #8B5CF6;
+      transform: translateY(-8px) scale(1.01);
+      box-shadow: 0 0 60px rgba(139,92,246,0.15), 0 24px 50px -20px rgba(139,92,246,0.2);
+    }
+
+    /* ============================================================
+       PROJECT CARDS
+       ============================================================ */
+    .project-card {
+      background: rgba(21, 18, 26, 0.6);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(139, 92, 246, 0.12);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .project-card:hover {
+      border-color: #8B5CF6;
+      transform: translateY(-10px) scale(1.01);
+      box-shadow: 0 0 60px rgba(139,92,246,0.12), 0 30px 60px -25px rgba(139,92,246,0.2);
+    }
+    .project-card .project-image {
+      height: 220px;
+      background: #0f0c14;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(139,92,246,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .project-card .project-image img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
+      filter: grayscale(0.5) brightness(0.85) contrast(0.95);
+    }
+    .project-card:hover .project-image img {
+      transform: scale(1.06);
+      filter: grayscale(0) brightness(1.05) contrast(1);
+    }
+
+    /* ===== TECH TAGS (no logos) ===== */
+    .tech-tag {
+      background: rgba(46, 40, 58, 0.4);
+      border: 1px solid rgba(139, 92, 246, 0.12);
+      padding: 0.2rem 0.8rem;
+      border-radius: 30px;
+      font-size: 0.65rem;
+      font-weight: 500;
+      color: #C084FC;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+    .tech-tag:hover {
+      background: rgba(139,92,246,0.12);
+      border-color: #8B5CF6;
+      transform: translateY(-2px);
+      box-shadow: 0 0 20px rgba(139,92,246,0.08);
+    }
+
+    /* ============================================================
+       CERTIFICATES
+       ============================================================ */
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    @media (max-width: 1024px) { .cert-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 640px) { .cert-grid { grid-template-columns: 1fr; } }
+
+    .cert-card {
+      background: rgba(21, 18, 26, 0.6);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(139, 92, 246, 0.12);
+      border-radius: 18px;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+    }
+    .cert-card:hover {
+      border-color: #8B5CF6;
+      transform: translateY(-8px) scale(1.01);
+      box-shadow: 0 0 60px rgba(139,92,246,0.12), 0 20px 40px -15px rgba(139,92,246,0.15);
+    }
+    .cert-card .cert-img {
+      height: 260px;
+      background: #0f0c14;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(139,92,246,0.08);
+    }
+    .cert-card .cert-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transition: filter 0.6s ease, transform 0.6s ease;
+      filter: grayscale(0.5) brightness(0.75) contrast(0.95);
+    }
+    .cert-card:hover .cert-img img {
+      filter: grayscale(0) brightness(1) contrast(1);
+      transform: scale(1.02);
+    }
+    .cert-card .cert-body { padding: 1.2rem 1.2rem 1.5rem; flex: 1; display: flex; flex-direction: column; }
+    .cert-card .cert-provider { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: #A78BFA; font-weight: 600; }
+    .cert-card .cert-title { font-weight: 600; font-size: 1rem; margin: 0.3rem 0 0.4rem; line-height: 1.3; }
+    .cert-card .cert-desc { font-size: 0.85rem; color: #B0A8B8; line-height: 1.5; flex: 1; }
+    .cert-card .cert-date { font-size: 0.7rem; color: #6E5E68; margin-top: 0.75rem; border-top: 1px dashed rgba(139,92,246,0.15); padding-top: 0.75rem; display: flex; align-items: center; gap: 0.4rem; }
+
+    /* ============================================================
+       SKILLS
+       ============================================================ */
+    .skill-chip {
+      background: rgba(46, 40, 58, 0.5);
+      border: 1px solid rgba(139, 92, 246, 0.15);
+      padding: 0.4rem 1.1rem;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #D4CEDC;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 8px rgba(139,92,246,0.02);
+    }
+    .skill-chip:hover {
+      background: rgba(139,92,246,0.15);
+      border-color: #8B5CF6;
+      color: #EEF2EE;
+      transform: translateY(-3px) scale(1.04);
+      box-shadow: 0 0 30px rgba(139,92,246,0.1);
+    }
+
+    /* ============================================================
+       FOCUS
+       ============================================================ */
+    .step-num {
+      width: 38px; height: 38px;
+      background: rgba(139,92,246,0.1);
+      border: 1px solid rgba(139,92,246,0.2);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      color: #C084FC;
+      transition: all 0.4s ease;
+      flex-shrink: 0;
+      box-shadow: 0 0 20px rgba(139,92,246,0.05);
+    }
+    .focus-item:hover .step-num {
+      background: #8B5CF6;
+      color: #fff;
+      border-color: #8B5CF6;
+      transform: scale(1.15) rotate(-8deg);
+      box-shadow: 0 0 50px rgba(139,92,246,0.3);
+    }
+    .step-line { width: 1px; background: linear-gradient(to bottom, rgba(139,92,246,0.2), transparent); }
+
+    /* ============================================================
+       TERMINAL
+       ============================================================ */
+    .terminal-wrap {
+      border: 1px solid rgba(139,92,246,0.15);
+      box-shadow: 0 0 40px rgba(139,92,246,0.05), inset 0 0 40px rgba(139,92,246,0.02);
+    }
+
+    /* ============================================================
+       SOCIAL LINKS
+       ============================================================ */
+    .social-link {
+      transition: all 0.3s ease;
+    }
+    .social-link:hover {
+      color: #C084FC;
+      text-shadow: 0 0 30px rgba(139,92,246,0.3);
+      transform: translateY(-2px);
+    }
+
+    /* ============================================================
+       RESPONSIVE
+       ============================================================ */
+    @media (max-width: 768px) {
+      .hero-title { font-size: 2.6rem; }
+      .project-card .project-image { height: 170px; }
+      .cert-card .cert-img { height: 200px; }
+    }
+    @media (max-width: 480px) {
+      .hero-title { font-size: 2rem; }
+      .btn-primary, .btn-outline { padding: 0.6rem 1.4rem; font-size: 0.8rem; }
+      .cert-card .cert-img { height: 180px; }
+    }
+
+    .term-dot { background: #8B5CF6; }
+  </style>
 </head>
+<body>
 
-<body class="font-body">
+<!-- PROGRESS BAR -->
+<div id="scrollProgress"></div>
 
-<!-- Ambient background layers -->
+<!-- AMBIENT -->
 <div class="bg-grid"></div>
 <div class="blob blob-a"></div>
 <div class="blob blob-b"></div>
 <div class="blob blob-c"></div>
-<div class="bg-noise"></div>
 
-<!-- Custom cursor -->
+<!-- CUSTOM CURSOR -->
 <div class="cursor-glow" id="cursorGlow"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 <div class="cursor-dot" id="cursorDot"></div>
 
-<!-- Scroll progress -->
-<div id="scrollProgress"></div>
-
 <!-- NAVBAR -->
-<header class="fixed top-0 inset-x-0 z-50 backdrop-blur-md" style="background: color-mix(in srgb, var(--bg) 78%, transparent); border-bottom:1px solid var(--border);">
+<header class="fixed top-0 inset-x-0 z-50 nav-glass">
   <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-    <a href="#home" class="font-display font-semibold tracking-tight text-lg">
-      Fazil<span style="color:var(--accent-bright)">.</span>M
+    <a href="#home" class="font-display font-bold text-xl tracking-tight neon-text">
+      Fazil<span class="text-accent-bright">.</span>M
     </a>
-
     <ul class="hidden md:flex items-center gap-8 font-mono text-xs uppercase tracking-wider" id="navLinks">
       <li><a href="#about" class="nav-link" data-i18n="nav.about">About</a></li>
       <li><a href="#certificates" class="nav-link" data-i18n="nav.certificates">Certificates</a></li>
@@ -65,22 +602,18 @@
       <li><a href="#focus" class="nav-link" data-i18n="nav.focus">Focus</a></li>
       <li><a href="#contact" class="nav-link" data-i18n="nav.contact">Contact</a></li>
     </ul>
-
     <div class="flex items-center gap-3">
-      <span class="magnetic"><button id="langToggle" class="font-mono text-xs px-2.5 py-1.5 rounded-md border" style="border-color:var(--border); color:var(--text-muted)">EN / AZ</button></span>
-      <span class="magnetic"><button id="themeToggle" aria-label="Toggle theme" class="w-9 h-9 rounded-md border flex items-center justify-center" style="border-color:var(--border)">
-        <svg id="themeIconDark" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-        <svg id="themeIconLight" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4"/><path stroke-linecap="round" d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
-      </button></span>
-      <button id="menuToggle" class="md:hidden w-9 h-9 flex flex-col items-center justify-center gap-1.5" aria-label="Menu">
-        <span class="w-5 h-px" style="background:var(--text)"></span>
-        <span class="w-5 h-px" style="background:var(--text)"></span>
+      <button id="langToggle" class="font-mono text-xs px-3 py-1.5 rounded-lg border border-border text-text-muted hover:text-text transition hover:border-accent">EN / AZ</button>
+      <button id="themeToggle" class="w-9 h-9 rounded-lg border border-border flex items-center justify-center text-text-muted hover:text-text transition hover:border-accent">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+      </button>
+      <button id="menuToggle" class="md:hidden w-9 h-9 flex flex-col items-center justify-center gap-1.5">
+        <span class="w-5 h-px bg-text"></span>
+        <span class="w-5 h-px bg-text"></span>
       </button>
     </div>
   </nav>
-
-  <!-- mobile menu -->
-  <div id="mobileMenu" class="md:hidden hidden flex-col px-6 pb-6 gap-4 font-mono text-sm" style="border-bottom:1px solid var(--border); background:var(--bg);">
+  <div id="mobileMenu" class="md:hidden hidden flex-col px-6 pb-6 gap-4 bg-surface/90 backdrop-blur border-b border-border">
     <a href="#about" class="nav-link" data-i18n="nav.about">About</a>
     <a href="#skills" class="nav-link" data-i18n="nav.skills">Skills</a>
     <a href="#projects" class="nav-link" data-i18n="nav.projects">Projects</a>
@@ -91,177 +624,508 @@
 
 <main>
 
-<!-- HERO -->
+<!-- ===== HERO ===== -->
 <section id="home" class="relative min-h-screen flex items-center pt-24 pb-16 overflow-hidden">
-  <canvas id="netCanvas" class="opacity-40"></canvas>
   <div class="max-w-6xl mx-auto px-6 relative z-10 grid md:grid-cols-2 gap-14 items-center w-full">
     <div>
-      <p class="font-mono text-xs uppercase tracking-widest eyebrow mb-5 reveal" data-i18n="hero.eyebrow" style="color:var(--text-muted)">full-stack .net developer</p>
-      <h1 id="heroName" data-text="Fazil
-Məmmədzadə" class="font-display font-semibold text-4xl sm:text-5xl lg:text-6xl leading-[1.05] tracking-tight mb-6">Fazil<br>Məmmədzadə</h1>
-      <p class="font-mono text-sm mb-6" style="color:var(--accent-bright)"><span id="typedRole"></span><span class="caret"></span></p>
-      <p class="max-w-md text-base leading-relaxed mb-9 reveal" style="--reveal-delay:150; color:var(--text-muted)" data-i18n="hero.subtitle">
-         I enjoy building scalable web applications, APIs, ERP and POS solutions across both frontend and backend while continuously learning modern technologies.
+      <p class="font-mono text-xs uppercase tracking-widest text-text-muted mb-5 reveal neon-text" data-i18n="hero.eyebrow">Full-Stack .NET Developer</p>
+      <h1 class="font-display font-bold text-5xl sm:text-6xl lg:text-7xl leading-[1.05] tracking-tight mb-4 hero-title">
+        Fazil<br>Məmmədzadə
+      </h1>
+      <p class="font-mono text-sm text-accent-bright mb-6 neon-text"><span id="typedRole"></span><span class="caret inline-block w-1 h-4 bg-accent-bright align-middle ml-0.5 animate-pulse"></span></p>
+      <p class="max-w-md text-base leading-relaxed mb-9 text-text-muted reveal" style="--reveal-delay:150" data-i18n="hero.subtitle">
+        I enjoy building scalable web applications, APIs, ERP and POS solutions across both frontend and backend while continuously learning modern technologies.
       </p>
       <div class="flex flex-wrap gap-4 reveal" style="--reveal-delay:250">
-        <span class="magnetic"><a href="#projects" class="px-6 py-3 rounded-md font-mono text-sm font-medium" style="background:var(--accent); color:#06120C" data-i18n="hero.btnProjects">View Projects</a></span>
-        <span class="magnetic"><a href="#contact" class="px-6 py-3 rounded-md font-mono text-sm border" style="border-color:var(--border)" data-i18n="hero.btnContact">Contact Me</a></span>
+        <a href="#projects" class="btn-primary" data-i18n="hero.btnProjects">View Projects →</a>
+        <a href="#contact" class="btn-outline" data-i18n="hero.btnContact">Contact Me</a>
       </div>
     </div>
-
-    <!-- Terminal signature element -->
-    <div class="term-window overflow-hidden reveal" style="--reveal-delay:200">
-      <div class="flex items-center gap-2 px-4 py-3" style="border-bottom:1px solid var(--border)">
-        <span class="w-2.5 h-2.5 rounded-full" style="background:#E5534B"></span>
-        <span class="w-2.5 h-2.5 rounded-full" style="background:#DDB531"></span>
-        <span class="w-2.5 h-2.5 rounded-full" style="background:#3FD187"></span>
-        <span class="ml-3 font-mono text-[11px]" style="color:var(--text-muted)">project — bash</span>
+    <div class="card-glass p-5 reveal terminal-wrap" style="--reveal-delay:200">
+      <div class="flex items-center gap-2 px-2 py-2 border-b border-border">
+        <span class="w-3 h-3 rounded-full bg-accent"></span>
+        <span class="w-3 h-3 rounded-full bg-accent-bright"></span>
+        <span class="w-3 h-3 rounded-full bg-accent-glow"></span>
+        <span class="ml-3 font-mono text-[11px] text-text-muted">bash — project</span>
       </div>
-      <div class="p-5 font-mono text-[13px] leading-7" id="termBody" style="color:var(--text-muted); min-height:260px">
-      </div>
+      <div class="p-4 font-mono text-[13px] leading-7 min-h-[200px] text-text-muted" id="termBody"></div>
     </div>
   </div>
 </section>
 
-<!-- ABOUT -->
+<!-- ===== ABOUT ===== -->
 <section id="about" class="py-28 px-6">
   <div class="max-w-4xl mx-auto">
-    <p class="font-mono text-xs uppercase tracking-widest eyebrow mb-4 reveal" data-i18n="about.eyebrow" style="color:var(--text-muted)">about</p>
+    <p class="font-mono text-xs uppercase tracking-widest text-text-muted mb-4 reveal neon-text" data-i18n="about.eyebrow">about</p>
     <h2 class="font-display font-semibold text-3xl sm:text-4xl mb-10 reveal" data-i18n="about.title">Who I am</h2>
     <div class="grid sm:grid-cols-3 gap-8">
-      <div class="sm:col-span-2 space-y-5 leading-relaxed reveal" style="color:var(--text-muted)">
+      <div class="sm:col-span-2 space-y-5 leading-relaxed text-text-muted reveal">
         <p data-i18n="about.p1">I'm a 15-year-old developer from Baku, Azerbaijan, currently in 10th grade. I've been learning programming for about three years, driven by genuine curiosity about how software works.</p>
         <p data-i18n="about.p2">I'm focused on full-stack development, building both frontend and backend applications. I'm especially drawn to ERP and POS systems—the logic behind inventory, sales, and multi-branch operations fascinates me.</p>
         <p data-i18n="about.p3">I'm highly motivated to keep learning new technologies, and most of what I know comes from building real projects and studying documentation closely.</p>
       </div>
-      <div class="reveal space-y-4 font-mono text-xs" style="--reveal-delay:120">
-        <div class="p-4 rounded-md border" style="border-color:var(--border); background:var(--surface)">
-          <p style="color:var(--text-muted)" data-i18n="about.locationLabel">Location</p>
-          <p class="mt-1" data-i18n="about.location">Baku, Azerbaijan</p>
+      <div class="reveal space-y-4" style="--reveal-delay:120">
+        <div class="card-glass p-4">
+          <p class="text-xs text-text-muted" data-i18n="about.locationLabel">Location</p>
+          <p class="mt-1 font-medium" data-i18n="about.location">Baku, Azerbaijan</p>
         </div>
-        <div class="p-4 rounded-md border" style="border-color:var(--border); background:var(--surface)">
-          <p style="color:var(--text-muted)" data-i18n="about.ageLabel">Age</p>
-          <p class="mt-1" data-i18n="about.age">15</p>
+        <div class="card-glass p-4">
+          <p class="text-xs text-text-muted" data-i18n="about.ageLabel">Age</p>
+          <p class="mt-1 font-medium" data-i18n="about.age">15</p>
         </div>
-        <div class="p-4 rounded-md border" style="border-color:var(--border); background:var(--surface)">
-          <p style="color:var(--text-muted)" data-i18n="about.focusLabel">Focus</p>
-          <p class="mt-1" data-i18n="about.focus">ERP &amp; POS Systems</p>
+        <div class="card-glass p-4">
+          <p class="text-xs text-text-muted" data-i18n="about.focusLabel">Focus</p>
+          <p class="mt-1 font-medium" data-i18n="about.focus">ERP &amp; POS Systems</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CERTIFICATIONS -->
-<section id="certificates" class="py-28 px-6" style="background:var(--bg-soft)">
+<!-- ===== CERTIFICATES ===== -->
+<section id="certificates" class="py-28 px-6 bg-surface/30">
   <div class="max-w-6xl mx-auto">
-    <p class="font-mono text-xs uppercase tracking-widest eyebrow mb-4 reveal" data-i18n="certificates.eyebrow" style="color:var(--text-muted)">certifications</p>
+    <p class="font-mono text-xs uppercase tracking-widest text-text-muted mb-4 reveal neon-text" data-i18n="certificates.eyebrow">certifications</p>
     <h2 class="font-display font-semibold text-3xl sm:text-4xl mb-14 reveal" data-i18n="certificates.title">Professional Certifications</h2>
-
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" id="certificatesGrid">
-      <!-- cards rendered by renderCertificates() in script.js -->
-    </div>
+    <div class="cert-grid" id="certificatesGrid"></div>
   </div>
 </section>
 
-<!-- SKILLS -->
-<section id="skills" class="py-28 px-6" style="background:var(--bg-soft)">
+<!-- ===== SKILLS ===== -->
+<section id="skills" class="py-28 px-6 bg-surface/20">
   <div class="max-w-6xl mx-auto">
-    <p class="font-mono text-xs uppercase tracking-widest eyebrow mb-4 reveal" data-i18n="skills.eyebrow" style="color:var(--text-muted)">skills</p>
+    <p class="font-mono text-xs uppercase tracking-widest text-text-muted mb-4 reveal neon-text" data-i18n="skills.eyebrow">skills</p>
     <h2 class="font-display font-semibold text-3xl sm:text-4xl mb-14 reveal" data-i18n="skills.title">What I work with</h2>
-
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="skillsGrid"></div>
+    <div class="grid md:grid-cols-3 gap-6" id="skillsGrid"></div>
   </div>
 </section>
 
-<!-- PROJECTS -->
+<!-- ===== PROJECTS ===== -->
 <section id="projects" class="py-28 px-6">
   <div class="max-w-6xl mx-auto">
-    <p class="font-mono text-xs uppercase tracking-widest eyebrow mb-4 reveal" data-i18n="projects.eyebrow" style="color:var(--text-muted)">projects</p>
+    <p class="font-mono text-xs uppercase tracking-widest text-text-muted mb-4 reveal neon-text" data-i18n="projects.eyebrow">projects</p>
     <h2 class="font-display font-semibold text-3xl sm:text-4xl mb-14 reveal" data-i18n="projects.title">Selected work</h2>
-
     <div class="grid sm:grid-cols-2 gap-6" id="projectsGrid"></div>
-
-    <div class="mt-8 p-6 rounded-lg border border-dashed reveal text-center font-mono text-xs" style="border-color:var(--border); color:var(--text-muted)" data-i18n="projects.more">
-      More projects coming soon.
-    </div>
+    <div class="mt-8 p-6 rounded-2xl border border-dashed border-border text-center text-text-muted font-mono text-xs reveal" data-i18n="projects.more">More projects coming soon.</div>
   </div>
 </section>
 
-<!-- FOCUS -->
-<section id="focus" class="py-28 px-6" style="background:var(--bg-soft)">
+<!-- ===== FOCUS ===== -->
+<section id="focus" class="py-28 px-6 bg-surface/30">
   <div class="max-w-6xl mx-auto">
-    <p class="font-mono text-xs uppercase tracking-widest eyebrow mb-4 reveal" data-i18n="focus.eyebrow" style="color:var(--text-muted)">focus</p>
+    <p class="font-mono text-xs uppercase tracking-widest text-text-muted mb-4 reveal neon-text" data-i18n="focus.eyebrow">focus</p>
     <h2 class="font-display font-semibold text-3xl sm:text-4xl mb-14 reveal" data-i18n="focus.title">What I'm building now</h2>
-
     <div class="grid md:grid-cols-3 gap-6 mb-20" id="focusGrid"></div>
-
     <div class="max-w-2xl">
-      <h3 class="font-mono text-xs uppercase tracking-widest mb-8 reveal" data-i18n="focus.workflowTitle" style="color:var(--accent-bright)">My workflow</h3>
+      <h3 class="font-mono text-xs uppercase tracking-widest mb-8 text-accent-bright neon-text reveal" data-i18n="focus.workflowTitle">My workflow</h3>
       <div id="workflowList"></div>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
+<!-- ===== CONTACT ===== -->
 <section id="contact" class="py-28 px-6">
   <div class="max-w-3xl mx-auto">
-    <p class="font-mono text-xs uppercase tracking-widest eyebrow mb-4 reveal" data-i18n="contact.eyebrow" style="color:var(--text-muted)">contact</p>
+    <p class="font-mono text-xs uppercase tracking-widest text-text-muted mb-4 reveal neon-text" data-i18n="contact.eyebrow">contact</p>
     <h2 class="font-display font-semibold text-3xl sm:text-4xl mb-4 reveal" data-i18n="contact.title">Let's talk</h2>
-    <p class="mb-10 reveal" style="color:var(--text-muted)" data-i18n="contact.subtitle">Have a project, a question, or just want to say hi? My inbox is open.</p>
-
-    <form id="contactForm" class="reveal space-y-5 glass p-6 sm:p-8 rounded-lg">
+    <p class="mb-10 text-text-muted reveal" data-i18n="contact.subtitle">Have a project, a question, or just want to say hi? My inbox is open.</p>
+    <form id="contactForm" class="reveal space-y-5 card-glass p-6 sm:p-8">
       <div class="grid sm:grid-cols-2 gap-5">
         <div>
-          <label class="block font-mono text-xs mb-2" style="color:var(--text-muted)" data-i18n="contact.nameLabel">Name</label>
-          <input required name="name" type="text" class="w-full px-4 py-3 rounded-md border bg-transparent outline-none text-sm" style="border-color:var(--border)">
+          <label class="block font-mono text-xs text-text-muted mb-2" data-i18n="contact.nameLabel">Name</label>
+          <input required name="name" type="text" class="w-full px-4 py-3 rounded-xl border border-border bg-transparent outline-none text-sm focus:border-accent transition" />
         </div>
         <div>
-          <label class="block font-mono text-xs mb-2" style="color:var(--text-muted)" data-i18n="contact.emailLabel">Email</label>
-          <input required name="email" type="email" class="w-full px-4 py-3 rounded-md border bg-transparent outline-none text-sm" style="border-color:var(--border)">
+          <label class="block font-mono text-xs text-text-muted mb-2" data-i18n="contact.emailLabel">Email</label>
+          <input required name="email" type="email" class="w-full px-4 py-3 rounded-xl border border-border bg-transparent outline-none text-sm focus:border-accent transition" />
         </div>
       </div>
       <div>
-        <label class="block font-mono text-xs mb-2" style="color:var(--text-muted)" data-i18n="contact.messageLabel">Message</label>
-        <textarea required name="message" rows="5" class="w-full px-4 py-3 rounded-md border bg-transparent outline-none text-sm resize-none" style="border-color:var(--border)"></textarea>
+        <label class="block font-mono text-xs text-text-muted mb-2" data-i18n="contact.messageLabel">Message</label>
+        <textarea required name="message" rows="5" class="w-full px-4 py-3 rounded-xl border border-border bg-transparent outline-none text-sm resize-none focus:border-accent transition"></textarea>
       </div>
-      <span class="magnetic"><button type="submit" class="px-6 py-3 rounded-md font-mono text-sm" style="background:var(--accent); color:#06120C" data-i18n="contact.sendBtn">Send Message</button></span>
-      <p id="formNote" class="text-xs font-mono" style="color:var(--text-muted)" data-i18n="contact.note">This form opens your email client — no data is stored or sent anywhere else.</p>
+      <button type="submit" class="btn-primary" data-i18n="contact.sendBtn">Send Message</button>
+      <p class="text-xs font-mono text-text-muted" data-i18n="contact.note">This form opens your email client — no data is stored or sent anywhere else.</p>
     </form>
   </div>
 </section>
 
 </main>
 
-<!-- FOOTER -->
-<footer class="py-10 px-6" style="border-top:1px solid var(--border)">
-  <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs" style="color:var(--text-muted)">
+<!-- ===== FOOTER ===== -->
+<footer class="py-10 px-6 border-t border-border">
+  <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-text-muted">
     <p>© <span id="year"></span> Fazil Məmmədzadə</p>
     <div class="flex items-center gap-5">
-
-      <a href="https://github.com/fazilmemmedzade" target="_blank" rel="noopener" class="flex items-center gap-2 hover:text-red-400 transition">
-        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12 .5C5.73.5.5 5.73.5 12c0 5.09 3.29 9.4 7.86 10.93.58.1.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 015.8 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.81 1.18 1.84 1.18 3.1 0 4.43-2.7 5.4-5.27 5.69.42.36.78 1.07.78 2.17 0 1.57-.01 2.83-.01 3.22 0 .31.21.67.8.56A11.5 11.5 0 0023.5 12c0-6.27-5.23-11.5-11.5-11.5z"/>
-        </svg>
+      <a href="https://github.com/fazilmemmedzade" target="_blank" rel="noopener" class="social-link flex items-center gap-2 transition">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.09 3.29 9.4 7.86 10.93.58.1.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 015.8 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.81 1.18 1.84 1.18 3.1 0 4.43-2.7 5.4-5.27 5.69.42.36.78 1.07.78 2.17 0 1.57-.01 2.83-.01 3.22 0 .31.21.67.8.56A11.5 11.5 0 0023.5 12c0-6.27-5.23-11.5-11.5-11.5z"/></svg>
         GitHub
       </a>
-
-      <a href="https://www.instagram.com/fazil_memmedzade/" target="_blank" rel="noopener" class="flex items-center gap-2 hover:text-red-400 transition">
-        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M7.75 2C4.57 2 2 4.57 2 7.75v8.5C2 19.43 4.57 22 7.75 22h8.5C19.43 22 22 19.43 22 16.25v-8.5C22 4.57 19.43 2 16.25 2h-8.5zm0 2h8.5A3.75 3.75 0 0120 7.75v8.5A3.75 3.75 0 0116.25 20h-8.5A3.75 3.75 0 014 16.25v-8.5A3.75 3.75 0 017.75 4zm8.9 1.25a1.1 1.1 0 100 2.2 1.1 1.1 0 000-2.2zM12 7a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6z"/>
-        </svg>
+      <a href="https://www.instagram.com/fazil_memmedzade/" target="_blank" rel="noopener" class="social-link flex items-center gap-2 transition">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M7.75 2C4.57 2 2 4.57 2 7.75v8.5C2 19.43 4.57 22 7.75 22h8.5C19.43 22 22 19.43 22 16.25v-8.5C22 4.57 19.43 2 16.25 2h-8.5zm0 2h8.5A3.75 3.75 0 0120 7.75v8.5A3.75 3.75 0 0116.25 20h-8.5A3.75 3.75 0 014 16.25v-8.5A3.75 3.75 0 017.75 4zm8.9 1.25a1.1 1.1 0 100 2.2 1.1 1.1 0 000-2.2zM12 7a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6z"/></svg>
         Instagram
       </a>
-
+      <a href="https://t.me/fazil_memmedzade" target="_blank" rel="noopener" class="social-link flex items-center gap-2 transition">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+        Telegram
+      </a>
     </div>
   </div>
 </footer>
 
-<button id="backToTop" class="fixed bottom-8 right-8 w-11 h-11 rounded-full flex items-center justify-center z-40" style="background:var(--accent); color:#06120C" aria-label="Back to top">
-  <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"/></svg>
+<button id="backToTop" class="fixed bottom-8 right-8 w-11 h-11 rounded-full bg-accent text-white flex items-center justify-center z-40 shadow-lg shadow-accent/30 hover:shadow-accent/50 transition opacity-0 pointer-events-none">
+  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"/></svg>
 </button>
 
-<script src="translations.js"></script>
-<script src="script.js"></script>
+<!-- ============================================================
+     SCRIPTS
+     ============================================================ -->
+<script>
+// ============================================================
+// CUSTOM CURSOR
+// ============================================================
+(function initCursor() {
+  const dot = document.getElementById("cursorDot");
+  const ring = document.getElementById("cursorRing");
+  const glow = document.getElementById("cursorGlow");
+  if (!dot || !ring || !glow) return;
+
+  let mx = window.innerWidth/2, my = window.innerHeight/2;
+  let rx = mx, ry = my, gx = mx, gy = my;
+
+  window.addEventListener("mousemove", (e) => {
+    mx = e.clientX; my = e.clientY;
+    dot.style.transform = `translate(${mx}px, ${my}px) translate(-50%,-50%)`;
+    document.body.classList.add("cursor-active");
+  });
+  window.addEventListener("mouseleave", () => document.body.classList.remove("cursor-active"));
+  window.addEventListener("mousedown", () => ring.classList.add("is-down"));
+  window.addEventListener("mouseup", () => ring.classList.remove("is-down"));
+
+  function loop() {
+    rx += (mx - rx) * 0.16;
+    ry += (my - ry) * 0.16;
+    gx += (mx - gx) * 0.07;
+    gy += (my - gy) * 0.07;
+    ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%,-50%)`;
+    glow.style.transform = `translate(${gx}px, ${gy}px) translate(-50%,-50%)`;
+    requestAnimationFrame(loop);
+  }
+  loop();
+
+  document.querySelectorAll("a, button, .nav-link, .project-card, .cert-card, .btn-primary, .btn-outline, .social-link, input, textarea, .skill-chip, .tech-tag").forEach(el => {
+    el.addEventListener("mouseenter", () => { ring.classList.add("is-hover"); dot.classList.add("is-hover"); });
+    el.addEventListener("mouseleave", () => { ring.classList.remove("is-hover"); dot.classList.remove("is-hover"); });
+  });
+})();
+
+// ============================================================
+// DATA
+// ============================================================
+const SKILLS = [
+  { key: "backend", items: ["C#", ".NET", "JWT Authentication", "Swagger"] },
+  { key: "frontend", items: ["HTML", "CSS", "JavaScript", "Tailwind CSS", "Bootstrap", "jQuery", "React", "Babel", "Vite"] },
+  { key: "database", items: ["Microsoft SQL Server", "SQLite", "MongoDB"] },
+];
+
+const PROJECTS = [
+  { key: "flight", repo: "Flight Booking", url: "https://github.com/fazilmemmedzade/FlightBooking", image: "https://github.com/fazilmemmedzade/My-Files/blob/main/FlightBooking.png?raw=true", tech: ["C#", "ASP.NET", "ML.NET","HTML","CSS","JavaScript",  "Bootstrap", "MVC","MongoDB",] },
+  { key: "blog", repo: "Blog App", url: "https://github.com/fazilmemmedzade/BlogApp", image: "https://github.com/fazilmemmedzade/My-Files/blob/main/BlogApp.png?raw=true", tech: ["C#","ASP.NET",  "Entity Framework Core","HTML","CSS","JavaScript" ,"Bootstrap", "MVC","MSSQL",] },
+  { key: "honey", repo: "Honey Photo", url: "https://github.com/fazilmmmdzad/HoneyPhoto", image: "https://github.com/fazilmmmdzad/HoneyPhoto/blob/master/Annotation%202026-06-30%2008394533.png?raw=true", tech: ["C#", ".NET Core", "Windows Forms"] },
+  { key: "temp", repo: "Honey Degrees", url: "https://github.com/fazilmemmedzade/Temperature_Transducer", image: "https://github.com/fazilmemmedzade/Temperature_Transducer/blob/main/Annotation%202026-06-30%2008371333.png?raw=true", tech: ["C#", ".NET Framework", "Windows Forms"] },
+  { key: "meeting", repo: "Meeting App", url: "https://github.com/fazilmmmdzad/MeetingApp", image: "https://github.com/fazilmmmdzad/My-Files/blob/main/Meeting4.png?raw=true", tech: ["C#", "ASP.NET","HTML","CSS", "Bootstrap", "MVC"] }
+];
+
+const CERTIFICATES = [
+  { key: "aspnet", image: "./AspDotNetCertificate.png" },
+  { key: "csharp", image: "./CsCertificate.png" },
+  { key: "frontend", image: "./HtmlCssJsCertificate.png" },
+];
+
+const WORKFLOW_KEYS = ["schema", "backend", "interface", "refine"];
+const FOCUS_KEYS = ["current", "philosophy", "learning"];
+const TERMINAL_LINES = ["$ whoami", "fazil_memmedzade", "$ dotnet --version", "8.0.100", "$ cat stack.json", '{ "frontend": "React", "backend": "ASP.NET Core", "orm": "EF Core", "db": "MSSQL" }', "$ status", "building project..."];
+
+// ============================================================
+// TRANSLATIONS
+// ============================================================
+const translations = {
+  en: {
+    nav: { about: "About", certificates: "Certificates", skills: "Skills", projects: "Projects", focus: "Focus", contact: "Contact" },
+    hero: { eyebrow: "Full-Stack .NET Developer", subtitle: "I enjoy building scalable web applications, APIs, ERP and POS solutions across both frontend and backend while continuously learning modern technologies.", btnProjects: "View Projects →", btnContact: "Contact Me", roles: ["Full-Stack Developer", "ASP.NET Core Developer", "React Developer", "Always Learning"] },
+    about: { eyebrow: "about", title: "Who I am", p1: "I'm a 15-year-old developer from Baku, Azerbaijan, currently in 10th grade. I've been learning programming for about three years, driven by genuine curiosity about how software works.", p2: "I'm focused on full-stack development, building both frontend and backend applications. I'm especially drawn to ERP and POS systems—the logic behind inventory, sales, and multi-branch operations fascinates me.", p3: "I'm highly motivated to keep learning new technologies, and most of what I know comes from building real projects and studying documentation closely.", locationLabel: "Location", location: "Baku, Azerbaijan", ageLabel: "Age", age: "15", focusLabel: "Focus", focus: "ERP & POS Systems" },
+    certificates: { eyebrow: "certifications", title: "Professional Certifications", aspnet: { title: "ASP.NET Core ile Sıfırdan İleri Seviye Web Geliştirme 2026", provider: "Udemy", description: "Completed a 36.5-hour ASP.NET Core course covering MVC, EF Core, Identity, REST APIs, and layered architecture.", date: "12 June 2026" }, csharp: { title: "C# Beginner and Advanced", provider: "Udemy", description: "Completed a 71.5-hour C# course focused on OOP, LINQ, collections, asynchronous programming, and .NET fundamentals.", date: "19 December 2024" }, frontend: { title: "Web Development from Scratch to Advanced Level (HTML, CSS, JavaScript)", provider: "Udemy", description: "Completed a 26.5-hour frontend course covering HTML, CSS, JavaScript, responsive design, and DOM manipulation.", date: "7 February 2025" } },
+    skills: { eyebrow: "skills", title: "What I work with", categories: { backend: "Backend", frontend: "Frontend", database: "Database" } },
+    projects: { eyebrow: "projects", title: "Selected work", more: "More projects coming soon.", honey: { title: "Honey Photo", desc: "Desktop image editing application developed with C# Windows Forms." }, temp: { title: "Honey Degrees", desc: "A simple tool to instantly convert temperatures between Celsius, Fahrenheit, and Kelvin." }, flight: { title: "Flight Booking", desc: "A full-stack airline reservation system with online booking, check-in, admin panel and machine learning based passenger prediction. (I am currently working on it)" }, meeting: { title: "Meeting App", desc: "MeetingApp is a user management application that allows users to register and view the total number of registered members." }, blog: { title: "Blog App", desc: "A social blogging platform where users can create, share, discover, and interact with blog posts." } },
+    focus: { eyebrow: "focus", title: "What I'm building now", cards: { current: { title: "Current focus", desc: "Building Flight Booking, a full-stack airline reservation system with ASP.NET MVC, MongoDB and ML.NET. Currently working on online booking, check-in, admin panel, and machine learning based passenger prediction." }, philosophy: { title: "How I approach problems", desc: "I design the database schema first, then the backend logic, then the interface — confirming each layer works before moving to the next." }, learning: { title: "What I'm learning", desc: "I am learning React, Tailwind CSS, MongoDB, and Vite technologies." } }, workflowTitle: "My workflow", workflow: { schema: { title: "Schema", desc: "Design the database first — tables, relationships, constraints, naming conventions." }, backend: { title: "Backend", desc: "Build the API and business logic with ASP.NET Core and Entity Framework Core." }, interface: { title: "Interface", desc: "Build the UI once the data layer is proven and stable." }, refine: { title: "Refine", desc: "Test, iterate, and harden the system before calling it done." } } },
+    contact: { eyebrow: "contact", title: "Let's talk", subtitle: "Have a project, a question, or just want to say hi? My inbox is open.", nameLabel: "Name", emailLabel: "Email", messageLabel: "Message", sendBtn: "Send Message", note: "This form opens your email client — no data is stored or sent anywhere else." }
+  },
+  az: {
+    nav: { about: "Haqqımda", certificates: "Sertifikatlarım", skills: "Bacarqlar", projects: "Layihələr", focus: "Fokus", contact: "Əlaqə" },
+    hero: { eyebrow: "Full-Stack .NET Developer", subtitle: "Frontend və backend texnologiyalarından istifadə edərək miqyaslana bilən veb tətbiqləri, API-lər, ERP və POS həlləri hazırlamağı sevirəm və daim müasir texnologiyaları öyrənirəm.", btnProjects: "Layihələrə Bax →", btnContact: "Mənimlə Əlaqə", roles: ["Full-Stack Developer", "ASP.NET Core Developer", "React Developer", "Daim öyrənirəm"] },
+    about: { eyebrow: "haqqımda", title: "Kiməm", p1: "Bakı, Azərbaycandan 15 yaşlı developerəm və hazırda 10-cu sinifdə oxuyuram. Təxminən üç ildir proqramlaşdırma öyrənirəm — bunun səbəbi proqram təminatının necə işlədiyinə olan həqiqi maraqdır.", p2: "Əsasən full-stack development-ə fokuslanmışam, xüsusilə ERP və POS sistemlərinə böyük maraq göstərirəm — anbar, satış və çox filiallı əməliyyatların arxasındakı məntiq məni cəlb edir.", p3: "Yeni texnologiyaları öyrənməyə yüksək həvəsim var və bildiklərimin əksəriyyəti real layihələr qurmaqdan və sənədləri diqqətlə araşdırmaqdan gəlir.", locationLabel: "Məkan", location: "Bakı, Azərbaycan", ageLabel: "Yaş", age: "15", focusLabel: "Fokus", focus: "ERP və POS Sistemləri" },
+    certificates: { eyebrow: "sertifikatlar", title: "Peşəkar Sertifikatlar", aspnet: { title: "ASP.NET Core ilə Sıfırdan İrəli Səviyyə Web Geliştirme 2026", provider: "Udemy", description: "MVC, Entity Framework Core, Identity, REST API-lər və laylı memarlığı əhatə edən 36.5 saatlıq ASP.NET Core kursunu uğurla tamamladım.", date: "12 İyun 2026" }, csharp: { title: "C# Başlanğıc və İrəli Səviyyə", provider: "Udemy", description: "OOP, LINQ, Collections, Asinxron proqramlaşdırma və .NET əsaslarını əhatə edən 71.5 saatlıq C# kursunu uğurla tamamladım.", date: "19 Dekabr 2024" }, frontend: { title: "Sıfırdan İrəli Səviyyə Web Geliştirme (HTML, CSS, JavaScript)", provider: "Udemy", description: "HTML, CSS, JavaScript, Responsive Design və DOM manipulyasiyasını əhatə edən 26.5 saatlıq frontend inkişaf kursunu uğurla tamamladım.", date: "7 Fevral 2025" } },
+    skills: { eyebrow: "bacarıqlar", title: "Nə ilə işləyirəm", categories: { backend: "Backend", frontend: "Frontend", database: "Verilənlər Bazası" } },
+    projects: { eyebrow: "layihələr", title: "Seçilmiş işlər", more: "Yeni layihələr tezliklə əlavə olunacaq.", honey: { title: "Honey Photo", desc: "C# Windows Forms ilə hazırlanmış desktop şəkil redaktəsi tətbiqi." }, temp: { title: "Honey Degrees", desc: "Selsi, Faranheyt və Kelvin arasında temperaturları sürətlə çevirən sadə bir proqram." }, flight: { title: "Flight Booking", desc: "Onlayn bilet sifarişi, Check-in, Admin Paneli və Machine Learning sərnişin proqnozlaşdırması olan tam funksional aviaşirkət sistemi. (Hal-hazırda üzərində işləyirəm)" }, meeting: { title: "Meeting App", desc: "MeetingApp istifadəçilərə qeydiyyatdan keçməyə və qeydiyyatdan keçmiş üzvlərin ümumi sayını görməyə imkan verən istifadəçi idarəetmə tətbiqidir." }, blog: { title: "Blog App", desc: "İstifadəçilərin bloq yazıları yarada, paylaşa, kəşf edə və onlarla qarşılıqlı əlaqədə ola bildikləri sosial bloq platforması." } },
+    focus: { eyebrow: "fokus", title: "Hazırda nə qururam", cards: { current: { title: "Hazırkı fokus", desc: "ASP.NET MVC, MongoDB və ML.NET istifadə edərək Flight Booking adlı tam funksional aviaşirkət rezervasiya sistemi hazırlayıram. Hazırda onlayn bilet sifarişi, Check-in, Admin Paneli və Machine Learning əsasında sərnişin proqnozlaşdırması üzərində işləyirəm." }, philosophy: { title: "Problemlərə yanaşmam", desc: "Əvvəlcə verilənlər bazası sxemini, sonra backend məntiqini, sonra isə interfeysi qururam — hər qatın işlədiyini təsdiqlədikdən sonra növbətinə keçirəm." }, learning: { title: "Nə öyrənirəm", desc: "React, Tailwind CSS, MongoDB və Vite texnologiyalarını öyrənirəm." } }, workflowTitle: "İş prosesim", workflow: { schema: { title: "Sxem", desc: "Əvvəlcə verilənlər bazasını dizayn edirəm — cədvəllər, əlaqələr, məhdudiyyətlər, adlandırma qaydaları." }, backend: { title: "Backend", desc: "ASP.NET Core və Entity Framework Core ilə API və biznes məntiqini qururam." }, interface: { title: "İnterfeys", desc: "Data qatı sınaqdan keçdikdən və stabil olduqdan sonra UI-ı qururam." }, refine: { title: "Cilalama", desc: "Bitmiş hesab etməzdən əvvəl sistemi test edir, təkmilləşdirir və möhkəmləndirirəm." } } },
+    contact: { eyebrow: "əlaqə", title: "Danışaq", subtitle: "Layihəniz, sualınız var, yoxsa sadəcə salam demək istəyirsiniz? Poçt qutum açıqdır.", nameLabel: "Ad", emailLabel: "E-poçt", messageLabel: "Mesaj", sendBtn: "Mesaj Göndər", note: "Bu forma e-poçt tətbiqinizi açır — heç bir məlumat saxlanılmır və ya başqa yerə göndərilmir." } }
+  }
+
+
+let currentLang = "en";
+
+function getNested(obj, path) { return path.split('.').reduce((o, k) => (o ? o[k] : undefined), obj); }
+
+function applyTranslations(lang) {
+  document.documentElement.lang = lang;
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    const val = getNested(translations[lang], el.getAttribute("data-i18n"));
+    if (typeof val === "string") el.textContent = val;
+  });
+  renderSkills(lang);
+  renderProjects(lang);
+  renderFocus(lang);
+  renderWorkflow(lang);
+  renderCertificates(lang);
+  startTyping();
+}
+
+// ============================================================
+// RENDER FUNCTIONS
+// ============================================================
+function renderSkills(lang) {
+  const grid = document.getElementById("skillsGrid");
+  if (!grid) return;
+  const dict = translations[lang].skills.categories;
+  grid.innerHTML = SKILLS.map((cat, i) => `
+    <div class="card-glass p-6 reveal" style="--reveal-delay:${i*80}">
+      <h3 class="font-mono text-xs uppercase tracking-widest text-accent-bright mb-4 neon-text">${dict[cat.key]}</h3>
+      <div class="flex flex-wrap gap-2">
+        ${cat.items.map(s => `<span class="skill-chip">${s}</span>`).join("")}
+      </div>
+    </div>
+  `).join("");
+  observeReveals(grid.querySelectorAll(".reveal"));
+}
+
+function renderProjects(lang) {
+  const grid = document.getElementById("projectsGrid");
+  if (!grid) return;
+  const dict = translations[lang].projects;
+  grid.innerHTML = PROJECTS.map((p, i) => {
+    const techTags = p.tech.map(t => `<span class="tech-tag">${t}</span>`).join(' ');
+
+    return `
+    <a href="${p.url}" target="_blank" rel="noopener" class="project-card block reveal" style="--reveal-delay:${i*90}">
+      <div class="project-image">
+        <img src="${p.image}" alt="${dict[p.key].title}" loading="lazy" 
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <div class="img-placeholder" style="display:none; width:100%; height:100%; align-items:center; justify-content:center; background:#0f0c14; color:#2E283A; font-family:'JetBrains Mono',monospace; font-size:0.7rem; letter-spacing:0.1em;">
+          ${dict[p.key].title}
+        </div>
+      </div>
+      <div class="p-5">
+        <h3 class="font-display font-semibold text-lg">${dict[p.key].title}</h3>
+        <p class="text-sm text-text-muted mt-1 mb-3">${dict[p.key].desc}</p>
+        <div class="flex flex-wrap gap-1.5">
+          ${techTags}
+        </div>
+      </div>
+    </a>
+  `}).join("");
+  observeReveals(grid.querySelectorAll(".reveal"));
+}
+
+function renderFocus(lang) {
+  const grid = document.getElementById("focusGrid");
+  if (!grid) return;
+  const dict = translations[lang].focus.cards;
+  grid.innerHTML = FOCUS_KEYS.map((key, i) => `
+    <div class="card-glass p-6 reveal focus-item" style="--reveal-delay:${i*90}">
+      <p class="font-mono text-xs text-accent-bright mb-3 neon-text">0${i+1}</p>
+      <h3 class="font-display font-semibold text-lg mb-3">${dict[key].title}</h3>
+      <p class="text-sm leading-relaxed text-text-muted">${dict[key].desc}</p>
+    </div>
+  `).join("");
+  observeReveals(grid.querySelectorAll(".reveal"));
+}
+
+function renderWorkflow(lang) {
+  const list = document.getElementById("workflowList");
+  if (!list) return;
+  const dict = translations[lang].focus.workflow;
+  list.innerHTML = WORKFLOW_KEYS.map((key, i) => `
+    <div class="flex gap-5 reveal focus-item" style="--reveal-delay:${i*90}">
+      <div class="flex flex-col items-center">
+        <div class="step-num">0${i+1}</div>
+        ${i < WORKFLOW_KEYS.length-1 ? '<div class="step-line h-8 my-1"></div>' : ''}
+      </div>
+      <div class="pb-6">
+        <h4 class="font-display font-semibold text-base mb-1">${dict[key].title}</h4>
+        <p class="text-sm leading-relaxed text-text-muted max-w-md">${dict[key].desc}</p>
+      </div>
+    </div>
+  `).join("");
+  observeReveals(list.querySelectorAll(".reveal"));
+}
+
+function renderCertificates(lang) {
+  const grid = document.getElementById("certificatesGrid");
+  if (!grid) return;
+  const dict = translations[lang].certificates;
+  grid.innerHTML = CERTIFICATES.map((c, i) => `
+    <a href="${c.image}" target="_blank" rel="noopener" class="cert-card reveal" style="--reveal-delay:${i*80}">
+      <div class="cert-img"><img src="${c.image}" alt="${dict[c.key].title}" loading="lazy" /></div>
+      <div class="cert-body">
+        <span class="cert-provider">${dict[c.key].provider}</span>
+        <h3 class="cert-title">${dict[c.key].title}</h3>
+        <p class="cert-desc">${dict[c.key].description}</p>
+        <span class="cert-date">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          ${dict[c.key].date}
+        </span>
+      </div>
+    </a>
+  `).join("");
+  observeReveals(grid.querySelectorAll(".reveal"));
+}
+
+// ============================================================
+// REVEAL OBSERVER
+// ============================================================
+function observeReveals(nodeList) {
+  nodeList.forEach(el => revealObserver.observe(el));
+}
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("visible"); revealObserver.unobserve(e.target); } });
+}, { threshold: 0.12, rootMargin: "0px 0px -30px 0px" });
+
+// ============================================================
+// TYPING
+// ============================================================
+let typingTimeout;
+function startTyping() {
+  clearTimeout(typingTimeout);
+  const el = document.getElementById("typedRole");
+  const roles = translations[currentLang].hero.roles;
+  let roleIndex = 0, charIndex = 0, deleting = false;
+  function tick() {
+    const word = roles[roleIndex];
+    el.textContent = deleting ? word.slice(0, charIndex--) : word.slice(0, charIndex++);
+    let delay = deleting ? 30 : 55;
+    if (!deleting && charIndex === word.length + 1) { deleting = true; delay = 1400; }
+    else if (deleting && charIndex === 0) { deleting = false; roleIndex = (roleIndex + 1) % roles.length; delay = 300; }
+    typingTimeout = setTimeout(tick, delay);
+  }
+  tick();
+}
+
+// ============================================================
+// TERMINAL
+// ============================================================
+function typeTerminal() {
+  const body = document.getElementById("termBody");
+  body.innerHTML = "";
+  let i = 0;
+  function next() {
+    if (i >= TERMINAL_LINES.length) return;
+    const line = document.createElement("div");
+    line.className = "term-line";
+    const isCommand = TERMINAL_LINES[i].startsWith("$");
+    line.style.color = isCommand ? "#EEF2EE" : "#C084FC";
+    body.appendChild(line);
+    let c = 0;
+    const text = TERMINAL_LINES[i];
+    const iv = setInterval(() => {
+      line.textContent = text.slice(0, c++);
+      if (c > text.length) { clearInterval(iv); i++; setTimeout(next, 350); }
+    }, 20);
+  }
+  next();
+}
+
+// ============================================================
+// THEME TOGGLE
+// ============================================================
+function toggleTheme() {
+  const html = document.documentElement;
+  const currentTheme = html.getAttribute("data-theme");
+  if (currentTheme === "light") {
+    html.removeAttribute("data-theme");
+    localStorage.setItem("theme", "dark");
+  } else {
+    html.setAttribute("data-theme", "light");
+    localStorage.setItem("theme", "light");
+  }
+}
+
+// ============================================================
+// DOM READY
+// ============================================================
+document.addEventListener("DOMContentLoaded", () => {
+  // Load saved theme
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme === "light") {
+    document.documentElement.setAttribute("data-theme", "light");
+  }
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+  applyTranslations(currentLang);
+  typeTerminal();
+  startTyping();
+
+  document.getElementById("langToggle").addEventListener("click", () => {
+    currentLang = currentLang === "en" ? "az" : "en";
+    applyTranslations(currentLang);
+  });
+
+  document.getElementById("themeToggle").addEventListener("click", toggleTheme);
+
+  const menuToggle = document.getElementById("menuToggle");
+  const mobileMenu = document.getElementById("mobileMenu");
+  menuToggle.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden");
+    mobileMenu.classList.toggle("flex");
+  });
+  mobileMenu.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
+    mobileMenu.classList.add("hidden"); mobileMenu.classList.remove("flex");
+  }));
+
+  const progress = document.getElementById("scrollProgress");
+  window.addEventListener("scroll", () => {
+    const h = document.documentElement;
+    const scrolled = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+    progress.style.width = scrolled + "%";
+  });
+
+  const backBtn = document.getElementById("backToTop");
+  window.addEventListener("scroll", () => {
+    backBtn.classList.toggle("opacity-0", window.scrollY < 500);
+    backBtn.classList.toggle("pointer-events-none", window.scrollY < 500);
+  });
+  backBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+
+  const sections = ["home","about","certificates","skills","projects","focus","contact"].map(id => document.getElementById(id)).filter(Boolean);
+  const navLinks = document.querySelectorAll(".nav-link");
+  const navIO = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(l => l.classList.toggle("active", l.getAttribute("href") === `#${entry.target.id}`));
+      }
+    });
+  }, { rootMargin: "-45% 0px -45% 0px" });
+  sections.forEach(s => navIO.observe(s));
+
+  document.getElementById("contactForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.querySelector('input[name="name"]').value;
+    const msg = form.querySelector('textarea[name="message"]').value;
+    window.location.href = `mailto:fazilmmmdzad48@gmail.com?subject=Portfolio Contact from ${encodeURIComponent(name)}&body=${encodeURIComponent(msg)}`;
+  });
+
+  observeReveals(document.querySelectorAll(".reveal"));
+});
+</script>
 </body>
 </html>
