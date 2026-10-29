@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fazil Məmmədzadə — Full-Stack .NET Developer</title>
+<meta name="description" content="Fazil Məmmədzadə — backend-focused full-stack .NET developer. C#, ASP.NET Core, SQL Server and web applications.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#06111f;--panel:#09192b;--panel2:#0c2036;--text:#f5f9ff;--muted:#a4b8d1;--blue:#1686ff;--line:#1b3957;--shadow:rgba(0,0,0,.3)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.6 'DM Sans',sans-serif;overflow-x:hidden}a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}::selection{background:var(--blue);color:#fff}
+body.light{--bg:#f4f8fc;--panel:#fff;--panel2:#eaf3fd;--text:#11283e;--muted:#516b86;--blue:#0874e6;--line:#d4e3f1;--shadow:rgba(20,45,80,.1)}
+.wrap{max-width:1320px;margin:auto;padding:0 44px}.grid-bg{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(to right,rgba(58,126,196,.085) 1px,transparent 1px),linear-gradient(to bottom,rgba(58,126,196,.085) 1px,transparent 1px);background-size:70px 70px;mask-image:linear-gradient(90deg,transparent 20%,black 100%)}
+header{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(20px);border-bottom:1px solid var(--line)}.nav{height:78px;display:flex;align-items:center;gap:35px}.brand{display:flex;align-items:center;gap:12px;font-weight:700;white-space:nowrap}.brand img{width:43px;height:43px}.navlinks{display:flex;gap:32px;margin:auto}.navlinks a,.lang button{font-size:13px;color:var(--muted);transition:color .25s}.navlinks a:hover,.navlinks a.active{color:var(--blue)}.navlinks a.active:after{content:'';display:block;height:2px;background:var(--blue);margin-top:8px}.nav-actions{display:flex;align-items:center;gap:13px}.lang{display:flex;gap:7px}.lang button{background:none;border:0;padding:4px}.lang button.active{color:var(--blue)}.icon-btn{width:34px;height:34px;background:none;color:var(--muted);border:1px solid transparent;border-radius:5px}.icon-btn:hover{color:var(--blue);border-color:var(--line)}.github-btn{padding:9px 17px;border:1px solid #46617e;border-radius:5px;font-size:13px;transition:background .2s,border .2s}.github-btn:hover{background:var(--panel2);border-color:var(--blue)}.menu-btn{display:none}
+.hero{position:relative;overflow:hidden}.hero>.wrap{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:55px;align-items:center;min-height:530px;padding-top:52px;padding-bottom:55px}.eyebrow{font:500 11px 'JetBrains Mono',monospace;letter-spacing:.17em;text-transform:uppercase;color:#94bce8}.hero h1{font-size:clamp(43px,4.1vw,67px);line-height:1.11;letter-spacing:-.055em;margin:16px 0}.hero h1 span{background:linear-gradient(110deg,#b7e0ff,#1686ff);color:transparent;background-clip:text}.hero p{color:var(--muted);font-size:15px;max-width:590px;margin:0 0 22px}.buttons{display:flex;gap:12px;flex-wrap:wrap}.btn{display:inline-flex;gap:18px;align-items:center;justify-content:center;padding:12px 21px;border:1px solid var(--blue);border-radius:5px;background:var(--blue);color:#fff;font-weight:600;font-size:13px;transition:transform .25s,box-shadow .25s,background .25s}.btn:hover{transform:translateY(-3px);box-shadow:0 10px 25px rgba(22,134,255,.24)}.btn.outline{background:transparent;border-color:#3e5975;color:var(--text)}.btn.outline:hover{background:var(--panel2);border-color:var(--blue)}.socials{display:flex;gap:13px;margin-top:22px}.socials a{height:39px;min-width:39px;display:grid;place-items:center;border:1px solid var(--line);border-radius:5px;color:var(--muted);font-size:14px;transition:color .2s,border-color .2s,transform .2s}.socials a:hover{color:var(--blue);border-color:var(--blue);transform:translateY(-3px)}
+.editor{position:relative;background:rgba(6,17,31,.9);border:1px solid #335678;border-radius:7px;overflow:hidden;box-shadow:0 20px 70px var(--shadow);transition:transform .3s,border-color .3s}.editor:hover{transform:translateY(-4px);border-color:#1686ff}.editor-bar{height:45px;border-bottom:1px solid #294665;display:flex;align-items:center;gap:7px;padding:0 16px;color:#c1d3e6;font:11px 'JetBrains Mono',monospace}.dot{height:10px;width:10px;border-radius:50%;background:#ff746e}.dot:nth-child(2){background:#ffd46e}.dot:nth-child(3){background:#7fda8a}.tab{margin-left:15px;padding:12px 17px;border-left:1px solid #294665;border-right:1px solid #294665;background:#0c2036}.editor pre{margin:0;padding:19px 20px 23px;color:#c7d9ef;font:12px/2 'JetBrains Mono',monospace;overflow:auto}.num{color:#607e9f;user-select:none}.kw{color:#d897d6}.method{color:#75baff}.comment{color:#6d94b7}.editor-label{position:absolute;right:17px;top:63px;transform:rotate(-9deg);font:italic 14px/1.8 'JetBrains Mono',monospace;color:#527ba8;opacity:.8;pointer-events:none}
+.section{padding:45px 0;border-top:1px solid var(--line)}.section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px;gap:20px}.section-head h2{font-size:16px;text-transform:uppercase;letter-spacing:.11em;font-weight:600;margin:0}.section-head h2:before{content:'';display:inline-block;width:25px;height:3px;background:var(--blue);vertical-align:middle;margin-right:18px}.section-head>a{font-size:12px;color:var(--blue);transition:transform .2s}.section-head>a:hover{transform:translateX(5px)}
+.tech-section{background:color-mix(in srgb,var(--panel) 62%,transparent);padding:23px 0}.tech-label{text-align:center;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.2em;color:var(--muted);margin-bottom:22px}.tech-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:12px}.tech{display:flex;align-items:center;flex-direction:column;gap:7px;font-size:10px;color:var(--muted);border:1px solid transparent;border-radius:5px;padding:9px 2px;transition:background .2s,border .2s,transform .2s}.tech:hover{transform:translateY(-5px);border-color:var(--line);background:var(--panel2);color:var(--text)}.tech img{width:31px;height:31px;object-fit:contain}
+.projects{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}.project{min-width:0;border:1px solid var(--line);border-radius:5px;background:var(--panel);padding:12px;transition:transform .25s,border-color .25s,box-shadow .25s}.project:hover{transform:translateY(-6px);border-color:var(--blue);box-shadow:0 14px 35px var(--shadow)}.project-image{height:148px;overflow:hidden;background:#0d2033;border:1px solid var(--line);border-radius:3px;position:relative}.project-image img{width:100%;height:100%;object-fit:cover;transition:transform .5s}.project:hover .project-image img{transform:scale(1.055)}.project h3{font-size:15px;margin:14px 0 6px}.project p{font-size:12px;line-height:1.6;color:var(--muted);min-height:75px;margin:0 0 12px}.tags{display:flex;flex-wrap:wrap;gap:5px}.tags span{font-size:10px;color:#b6d0ed;background:#102943;border:1px solid #20415e;border-radius:4px;padding:3px 7px}.project-links{display:flex;gap:14px;margin-top:14px;font-size:12px;color:var(--blue)}.project-links a:hover{text-decoration:underline}.image-fallback{display:none;position:absolute;inset:0;align-items:center;justify-content:center;background:linear-gradient(135deg,#102842,#081727);font-size:12px;color:#b8d0e7}.project-image.failed .image-fallback{display:flex}.project-image.failed img{display:none}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:45px;align-items:center}.about h2,.contact h2{font-size:26px;margin:0 0 10px}.about p,.contact p{font-size:14px;color:var(--muted);max-width:650px}.facts{display:flex;gap:12px;flex-wrap:wrap;margin-top:23px}.fact{border:1px solid var(--line);border-radius:4px;padding:10px 15px;min-width:140px;transition:border .2s,transform .2s}.fact:hover{border-color:var(--blue);transform:translateY(-3px)}.fact small{display:block;color:var(--muted);font-size:10px}.fact strong{font-size:12px}.about-visual{min-height:240px;background:linear-gradient(135deg,#0c2036,#06111f);border:1px solid var(--line);border-radius:5px;display:grid;place-items:center;position:relative;overflow:hidden}.about-visual:before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 45px,rgba(43,113,188,.07) 46px 47px)}.about-visual img{width:135px;filter:drop-shadow(0 0 28px rgba(22,134,255,.2));animation:logoFloat 6s ease-in-out infinite}.about-visual span{position:absolute;bottom:18px;right:18px;font:11px 'JetBrains Mono',monospace;color:#8abce9}
+.contact-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}.contact-row a{border:1px solid var(--line);padding:12px 21px;border-radius:4px;min-width:150px;font-size:13px;transition:border .2s,background .2s,transform .2s}.contact-row a:hover{border-color:var(--blue);background:var(--panel2);transform:translateY(-3px)}footer{padding:25px 0;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}footer .wrap{display:flex;justify-content:space-between;gap:15px}
+.reveal{opacity:0;transform:translateY(19px);transition:opacity .7s,transform .7s}.reveal.visible{opacity:1;transform:translateY(0)}@keyframes logoFloat{50%{transform:translateY(-9px)}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}.about-visual img{animation:none}}
+@media(pointer:fine){body.custom-cursor,body.custom-cursor *{cursor:none!important}.cursor-dot,.cursor-ring{position:fixed;top:0;left:0;pointer-events:none;z-index:999;transform:translate(-50%,-50%);border-radius:50%;opacity:0}.cursor-dot{width:6px;height:6px;background:#fff;box-shadow:0 0 9px var(--blue)}.cursor-ring{width:28px;height:28px;border:1px solid var(--blue);transition:width .2s,height .2s,background .2s}.cursor-ring.hover{width:48px;height:48px;background:rgba(22,134,255,.12)}}
+@media(max-width:1100px){.wrap{padding:0 26px}.hero>.wrap{gap:25px}.projects{grid-template-columns:repeat(2,minmax(0,1fr))}.tech-grid{grid-template-columns:repeat(6,1fr)}.navlinks{gap:15px}.editor-label{display:none}}
+@media(max-width:760px){.wrap{padding:0 20px}.nav{height:68px;gap:12px}.brand span{font-size:13px}.navlinks{display:none;position:absolute;left:0;right:0;top:68px;padding:22px;background:var(--panel);border-bottom:1px solid var(--line);flex-direction:column;gap:18px}.navlinks.open{display:flex}.nav-actions{margin-left:auto}.github-btn{display:none}.menu-btn{display:block}.hero>.wrap{grid-template-columns:1fr;gap:25px;padding-top:50px}.hero h1{font-size:clamp(40px,9vw,58px)}.editor pre{font-size:10px}.tech-grid{grid-template-columns:repeat(4,1fr)}.about-grid{grid-template-columns:1fr}.about-visual{min-height:180px}.about-visual img{width:100px}}
+@media(max-width:500px){.projects{grid-template-columns:1fr}.project-image{height:195px}.project p{min-height:0}.tech-grid{grid-template-columns:repeat(3,1fr)}.hero h1{font-size:39px}.hero p{font-size:14px}.brand img{width:35px;height:35px}.section{padding:35px 0}}
+
+.projects{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.project-image{height:190px}.section{padding:75px 0}.section-alt{background:var(--panel)}
+.expertise-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.expertise-card{border:1px solid var(--line);padding:27px;background:var(--panel);border-radius:4px;transition:transform .2s,border-color .2s}.expertise-card:hover{transform:translateY(-5px);border-color:var(--blue)}.expertise-card small,.cert-row small{font:11px 'JetBrains Mono',monospace;color:var(--blue)}.expertise-card h3{font-size:20px;margin:20px 0 10px}.expertise-card p{font-size:13px;color:var(--muted);min-height:75px}.expertise-card span{display:block;border-top:1px solid var(--line);padding-top:15px;font-size:11px;color:#78b9f4}
+.workflow-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}.workflow-card{border-top:2px solid var(--line);padding:22px 0;transition:border-color .2s,transform .2s}.workflow-card:hover{border-color:var(--blue);transform:translateY(-4px)}.workflow-card b{color:var(--blue);font:12px 'JetBrains Mono',monospace}.workflow-card h3{font-size:19px;margin:20px 0 8px}.workflow-card p{font-size:13px;color:var(--muted)}
+.cert-list{display:grid;gap:10px}.cert-row{display:grid;grid-template-columns:45px 1fr auto;align-items:center;gap:20px;border:1px solid var(--line);padding:22px;background:var(--panel);border-radius:4px;transition:transform .2s,border-color .2s}.cert-row:hover{transform:translateX(5px);border-color:var(--blue)}.cert-row>b{color:var(--blue)}.cert-row h3{font-size:17px;margin:5px 0}.cert-row p{font-size:13px;color:var(--muted);margin:0}.cert-row>span{font-size:12px;color:var(--muted)}
+.current-grid{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:60px}.current-grid h3{font-size:50px;margin:5px 0}.current-grid p{font-size:15px;color:var(--muted)}.in-dev{color:#69c3a3!important;font-size:12px!important;margin-top:25px}.current-visual{padding:22px;border:1px solid #34536e;border-radius:4px;background:#08192b}.dash-header{color:#fff;border-bottom:1px solid #2d4963;padding-bottom:14px;font-weight:700}.dash-header span{float:right;font-weight:400;color:#86a8c4;font-size:12px}.dash-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:17px 0}.dash-stats div{padding:12px;border:1px solid #234361;color:#a2c1d8;font-size:12px}.dash-stats i{display:block;width:70%;height:5px;background:#2c587c;margin-top:10px}.dash-stats i:last-child{width:45%;background:#2d6a4f}.dash-bars{height:145px;border:1px solid #234361;padding:10px;display:flex;align-items:end;gap:12px}.dash-bars i{flex:1;background:linear-gradient(#2485c4,#194264)}.current-visual>small{color:#83a2b9;font-size:10px}
+@media(max-width:900px){.expertise-grid,.projects{grid-template-columns:repeat(2,1fr)}.workflow-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:650px){.expertise-grid,.projects,.current-grid{grid-template-columns:1fr}.cert-row{grid-template-columns:30px 1fr}.cert-row>span{grid-column:2}.section{padding:52px 0}}
+
+/* Icon and logo corrections: no broken image URLs */
+.fm-mark{display:block;width:42px;height:42px;flex-shrink:0}
+.about-visual .fm-mark{width:145px;height:145px;filter:drop-shadow(0 6px 24px rgba(22,134,255,.2));animation:logoFloat 6s ease-in-out infinite}
+.lucide{display:inline-block;width:19px;height:19px;vertical-align:middle;flex-shrink:0}
+.socials a .lucide{width:19px;height:19px}
+.contact-row a{display:inline-flex;align-items:center;gap:10px;justify-content:flex-start}
+.contact-row a .lucide{color:var(--blue);width:19px;height:19px}
+.tech .tech-lucide{width:32px;height:32px;color:#74b9fa;transition:color .2s,transform .2s}
+.tech:hover .tech-lucide{color:var(--blue);transform:scale(1.12)}
+.tech{gap:12px}
+.tech-grid{align-items:stretch}
+.tech-section .tech-label{margin-bottom:24px}
+@media(max-width:760px){.fm-mark{width:36px;height:36px}}
+@media(prefers-reduced-motion:reduce){.about-visual .fm-mark{animation:none}}
+
+.certificate-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.certificate-card{min-width:0;background:var(--panel);border:1px solid var(--line);border-radius:4px;overflow:hidden;transition:transform .25s,border-color .25s,box-shadow .25s}
+.certificate-card:hover{transform:translateY(-5px);border-color:var(--blue);box-shadow:0 15px 36px var(--shadow)}
+.certificate-preview{display:flex;align-items:center;justify-content:center;aspect-ratio:1.43;background:#e6edf5;padding:12px;overflow:hidden;border-bottom:1px solid var(--line)}
+.certificate-preview img{display:block;width:100%;height:100%;object-fit:contain;transition:transform .35s}
+.certificate-card:hover .certificate-preview img{transform:scale(1.035)}
+.certificate-unavailable{color:#26445e;font-size:13px;text-align:center}
+.certificate-info{padding:20px}.certificate-info small{font:11px 'JetBrains Mono',monospace;color:var(--blue)}
+.certificate-info h3{font-size:17px;margin:10px 0 14px}.certificate-info>a{font-size:12px;color:var(--blue)}
+.certificate-info>a:hover{text-decoration:underline}
+@media(max-width:900px){.certificate-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.certificate-grid{grid-template-columns:1fr}}
+
+/* Monochrome previews: restore original colors on hover and keyboard focus */
+.project-image img,.certificate-preview img{filter:grayscale(1) brightness(.64) contrast(1.12);transition:filter .45s ease,transform .45s ease}
+.project:hover .project-image img,.project:focus-within .project-image img,.project-image:hover img,
+.certificate-card:hover .certificate-preview img,.certificate-card:focus-within .certificate-preview img,.certificate-preview:hover img{filter:grayscale(0) brightness(1) contrast(1)}
+/* Apply the same effect to other visual content, without dimming text or UI icons */
+.about-visual .fm-mark{filter:grayscale(1) brightness(.62);transition:filter .45s ease,transform .45s ease}
+.about-visual:hover .fm-mark{filter:grayscale(0) brightness(1)}
+/* Refined animated cursor: sharp dot, responsive ring and subtle blue halo */
+@media(pointer:fine) and (prefers-reduced-motion:no-preference){
+.cursor-dot{width:7px;height:7px;background:#f6fbff;box-shadow:0 0 12px rgba(22,134,255,.9)}
+.cursor-ring{width:32px;height:32px;border:1px solid rgba(55,158,255,.95);box-shadow:0 0 16px rgba(22,134,255,.16),inset 0 0 12px rgba(22,134,255,.08);background:rgba(22,134,255,.025);transition:width .22s,height .22s,background .22s,border-color .22s,box-shadow .22s}
+.cursor-ring.hover{width:52px;height:52px;border-color:#78c6ff;background:rgba(22,134,255,.1);box-shadow:0 0 24px rgba(22,134,255,.25)}
+.cursor-ring.pressed{width:20px;height:20px;background:rgba(22,134,255,.24)}
+}
+@media(prefers-reduced-motion:reduce){.project-image img,.certificate-preview img,.about-visual .fm-mark{transition:none}}
+
+/* Consistent interactive motion for every panel, tag and control */
+:root{--hover-ease:cubic-bezier(.22,1,.36,1)}
+.project,.certificate-card,.expertise-card,.workflow-card,.fact,.tech,.editor,.about-visual,.current-visual,.cert-row,.certificate-preview,.contact-row a,.socials a,.github-btn,.btn,.icon-btn,.tags span,.exp-tags,.project-links a,.certificate-info>a,.navlinks a,.brand,.tech-lucide,.certificate-unavailable,.section-head>a{transition-property:transform,border-color,background-color,color,box-shadow,filter,opacity;transition-duration:300ms;transition-timing-function:var(--hover-ease)}
+/* Larger panels: subtle lift and border highlight without childish glow */
+.project:hover,.certificate-card:hover,.expertise-card:hover,.workflow-card:hover,.editor:hover,.about-visual:hover,.current-visual:hover,.cert-row:hover{transform:translateY(-5px);border-color:var(--blue);box-shadow:0 16px 38px var(--shadow)}
+.project:focus-within,.certificate-card:focus-within,.expertise-card:focus-within,.editor:focus-within{border-color:var(--blue);box-shadow:0 0 0 1px var(--blue)}
+/* Tags and metadata pills all react independently */
+.tags span,.exp-tags{display:inline-flex;align-items:center;min-height:24px;will-change:auto}
+.tags span:hover,.exp-tags:hover{transform:translateY(-3px);border-color:var(--blue);background:rgba(22,134,255,.16);color:#a9d7ff;box-shadow:0 5px 13px rgba(0,0,0,.12)}
+/* Tiny elements should feel interactive too */
+.fact:hover,.tech:hover{transform:translateY(-4px);border-color:var(--blue);background:var(--panel2)}
+.project-links a:hover,.certificate-info>a:hover,.section-head>a:hover{color:#73b9ff;transform:translateX(3px)}
+.navlinks a:hover,.brand:hover{color:var(--blue)}
+.btn:hover,.github-btn:hover,.contact-row a:hover,.socials a:hover,.icon-btn:hover{transform:translateY(-3px);border-color:var(--blue);box-shadow:0 8px 22px rgba(0,0,0,.14)}
+/* Project images and certificate images stay muted until hovered */
+.project-image img,.certificate-preview img{filter:grayscale(1) brightness(.66) saturate(.3);transition:filter .55s var(--hover-ease),transform .55s var(--hover-ease)}
+.project:hover .project-image img,.project-image:hover img,.certificate-card:hover .certificate-preview img,.certificate-preview:hover img{filter:grayscale(0) brightness(1) saturate(1);transform:scale(1.035)}
+/* Keyboard usability and motion accessibility */
+a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offset:4px}
+@media(prefers-reduced-motion:reduce){.project,.certificate-card,.expertise-card,.workflow-card,.fact,.tech,.editor,.about-visual,.current-visual,.cert-row,.certificate-preview,.contact-row a,.socials a,.github-btn,.btn,.icon-btn,.tags span,.exp-tags,.project-links a,.certificate-info>a,.navlinks a,.brand,.tech-lucide,.project-image img,.certificate-preview img{transition:none!important;transform:none!important}}
+
+/* Mouse-reactive motion: cards lean toward the pointer, tags follow subtly. */
+@media (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+.motion-panel{position:relative;transform-style:preserve-3d;will-change:transform;transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .35s,border-color .35s!important}
+.motion-panel:hover{transform:perspective(950px) rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg)) translate3d(0,-7px,0)!important;box-shadow:0 19px 45px rgba(0,0,0,.26),0 0 0 1px rgba(22,134,255,.15)!important}
+.motion-panel::after{content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:3;opacity:0;background:radial-gradient(350px circle at var(--glow-x,50%) var(--glow-y,50%),rgba(54,152,255,.11),transparent 70%);transition:opacity .3s}
+.motion-panel:hover::after{opacity:1}
+.motion-tag{will-change:transform;transition:transform .2s cubic-bezier(.2,.8,.2,1),background-color .2s,border-color .2s,color .2s!important}
+.motion-tag:hover{transform:translate3d(var(--mag-x,0px),calc(var(--mag-y,0px) - 3px),0) scale(1.055)!important}
+.motion-action{will-change:transform;transition:transform .24s cubic-bezier(.2,.8,.2,1),box-shadow .2s,border-color .2s!important}
+.motion-action:hover{transform:translate3d(var(--mag-x,0px),calc(var(--mag-y,0px) - 3px),0)!important}
+}
+@media(prefers-reduced-motion:reduce){.motion-panel,.motion-tag,.motion-action{transition:none!important;transform:none!important}}
+
+.tech-grid{gap:8px}
+.tech{border-radius:5px;padding:12px 4px;min-height:102px;display:flex;justify-content:center;align-items:center;gap:10px}
+.tech-logo{width:46px;height:46px;display:grid;place-items:center}
+.tech-logo img{width:39px;height:39px;object-fit:contain;filter:grayscale(1) brightness(.83);transition:filter .28s ease,transform .28s ease}
+.tech:hover .tech-logo img{filter:none;transform:scale(1.14)}
+.tech-fallback{font-size:15px;color:#74b9fa;font-weight:700}
+.tech:hover{transform:none!important;border-color:var(--line)}
+/* Workflow is informational, not an interactive panel. */
+.workflow-card,.workflow-card:hover{transform:none!important;border-top-color:var(--line)!important;box-shadow:none!important}
+.workflow-card{transition:none!important}
+@media(hover:hover) and (pointer:fine){
+ .tech:hover{background:var(--panel2)}
+ .cursor-ring{mix-blend-mode:normal}
+}
+
+/* Final interaction layer: clear lift and scale on real content cards, not workflow. */
+@media (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+.project.motion-panel,.certificate-card.motion-panel,.expertise-card.motion-panel{
+ transform:translate3d(0,0,0) scale(1)!important;
+ transition:transform 360ms cubic-bezier(.18,.8,.22,1),border-color 300ms,box-shadow 360ms!important;
+ transform-origin:center center;
+ position:relative;
+}
+.project.motion-panel:hover,.certificate-card.motion-panel:hover,.expertise-card.motion-panel:hover{
+ transform:translate3d(0,-11px,0) scale(1.018)!important;
+ border-color:#1686ff!important;
+ box-shadow:0 24px 48px rgba(0,0,0,.32),0 0 0 1px rgba(22,134,255,.22)!important;
+ z-index:5;
+}
+.project.motion-panel:hover .project-image img{transform:scale(1.07)!important}
+.certificate-card.motion-panel:hover .certificate-preview img{transform:scale(1.055)!important}
+.tags span.motion-tag:hover{transform:translateY(-4px) scale(1.06)!important;background:#1b4970!important;border-color:#1686ff!important}
+.socials a.motion-action:hover,.contact-row a.motion-action:hover,.btn.motion-action:hover{transform:translateY(-5px) scale(1.025)!important}
+.workflow-card,.workflow-card:hover{transform:none!important;box-shadow:none!important}
+}
+
+/* Interactive motion v3 — only meaningful panels, never workflow steps. */
+@media (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+.project,.certificate-card,.expertise-card,.fact,.about-visual,.editor,.cert-row{
+ transition:transform .38s cubic-bezier(.2,.85,.25,1),border-color .3s,box-shadow .38s!important;
+ transform:translateY(0) scale(1)!important;position:relative;
+}
+.project:hover,.certificate-card:hover,.expertise-card:hover{
+ transform:translateY(-10px) scale(1.017)!important;
+ border-color:#1686ff!important;
+ box-shadow:0 22px 42px rgba(0,0,0,.26)!important;
+ z-index:3;
+}
+.fact:hover,.about-visual:hover,.editor:hover,.cert-row:hover{
+ transform:translateY(-5px)!important;border-color:#1686ff!important;
+ box-shadow:0 12px 25px rgba(0,0,0,.17)!important;
+}
+.project,.certificate-card,.expertise-card,.editor,.about-visual,.fact{isolation:isolate}
+.project::after,.certificate-card::after,.expertise-card::after,.editor::after,.about-visual::after{
+ content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:2;opacity:0;
+ background:radial-gradient(330px circle at var(--mx,50%) var(--my,50%),rgba(22,134,255,.115),transparent 70%);
+ transition:opacity .35s;
+}
+.project:hover::after,.certificate-card:hover::after,.expertise-card:hover::after,.editor:hover::after,.about-visual:hover::after{opacity:1}
+.tags span{transition:transform .28s cubic-bezier(.2,.85,.25,1),background-color .25s,border-color .25s!important}
+.tags span:hover{transform:translateY(-4px) scale(1.06)!important;border-color:var(--blue)!important}
+.tech{transition:background-color .28s,border-color .28s!important}
+.tech:hover{transform:none!important}
+.tech-logo img{transition:filter .35s,transform .35s!important}
+.tech:hover .tech-logo img{transform:translateY(-4px) scale(1.12)!important}
+.btn,.github-btn,.contact-row a,.socials a,.icon-btn,.section-head>a,.project-links a,.certificate-info>a{
+ transition:transform .28s cubic-bezier(.2,.85,.25,1),border-color .28s,box-shadow .28s,background-color .28s!important;
+}
+.btn:hover,.github-btn:hover,.contact-row a:hover,.socials a:hover,.icon-btn:hover{transform:translateY(-4px)!important}
+.project-links a:hover,.certificate-info>a:hover,.section-head>a:hover{transform:translateX(5px)!important}
+.workflow-card,.workflow-card:hover{transform:none!important;box-shadow:none!important;transition:none!important}
+}
+/* Truly custom mouse pointer: all native cursors are suppressed on desktop. */
+@media (hover:hover) and (pointer:fine){
+html.has-fm-cursor,html.has-fm-cursor *,html.has-fm-cursor *::before,html.has-fm-cursor *::after{
+ cursor:none!important;
+}
+html.has-fm-cursor .cursor-dot,html.has-fm-cursor .cursor-ring{display:block!important;pointer-events:none!important}
+.cursor-dot{
+ width:9px!important;height:9px!important;background:#eaf7ff!important;border:2px solid #1686ff!important;
+ border-radius:2px!important;transform:translate(-50%,-50%) rotate(45deg)!important;
+ box-shadow:0 0 13px rgba(22,134,255,.65)!important;z-index:2147483647!important;
+ position:fixed!important;opacity:0;
+}
+.cursor-ring{
+ width:34px!important;height:34px!important;border:1.5px solid #1686ff!important;
+ background:rgba(22,134,255,.035)!important;border-radius:50%!important;
+ box-shadow:0 0 0 1px rgba(22,134,255,.1),0 0 20px rgba(22,134,255,.18)!important;
+ transform:translate(-50%,-50%)!important;position:fixed!important;
+ z-index:2147483646!important;opacity:0;transition:width .2s,height .2s,background .2s,opacity .16s!important;
+}
+.cursor-ring.hover{width:54px!important;height:54px!important;background:rgba(22,134,255,.11)!important}
+.cursor-ring.pressed{width:22px!important;height:22px!important}
+}
+/* Accessibility: no custom cursor on touch or reduced-motion devices. */
+@media (hover:none),(pointer:coarse),(prefers-reduced-motion:reduce){
+.cursor-dot,.cursor-ring{display:none!important}
+}
+
+/* Final, independent custom pointer; hidden native cursor throughout desktop site. */
+#fmCursor{display:none;position:fixed;inset:0;pointer-events:none;z-index:2147483647;opacity:0;transition:opacity .15s}
+#fmCursor>svg{position:absolute;top:var(--cy,-100px);left:var(--cx,-100px);transform:translate(-4px,-3px);filter:drop-shadow(0 2px 6px rgba(22,134,255,.6));transition:filter .18s}
+#fmCursor .fm-cursor-orbit{position:absolute;top:0;left:0;width:44px;height:44px;border:1.5px solid #1686ff;border-radius:50%;box-shadow:0 0 17px rgba(22,134,255,.22);transition:width .22s,height .22s,background .22s,opacity .22s}
+#fmCursor.is-interactive .fm-cursor-orbit{width:62px;height:62px;background:rgba(22,134,255,.10)}
+#fmCursor.is-clicking .fm-cursor-orbit{width:27px;height:27px;background:rgba(22,134,255,.2)}
+@media(pointer:fine){
+ html.fm-custom-cursor,html.fm-custom-cursor body,html.fm-custom-cursor body *{cursor:none!important}
+ html.fm-custom-cursor #fmCursor{display:block}
+ html.fm-custom-cursor #fmCursor.is-visible{opacity:1}
+}
+@media(pointer:coarse){#fmCursor{display:none!important}}
+/* Consistent visible motion on interactive areas, not the workflow timeline. */
+@media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+ .project,.certificate-card,.expertise-card,.editor,.about-visual,.fact,.cert-row{
+   transform:translateY(0)!important;
+   transition:transform .36s cubic-bezier(.16,1,.3,1),box-shadow .36s,border-color .3s!important;
+ }
+ .project:hover,.certificate-card:hover,.expertise-card:hover{
+   transform:translateY(-12px) scale(1.015)!important;box-shadow:0 23px 45px rgba(0,0,0,.28)!important;border-color:var(--blue)!important;
+ }
+ .editor:hover,.about-visual:hover,.fact:hover,.cert-row:hover{
+   transform:translateY(-6px)!important;box-shadow:0 14px 30px rgba(0,0,0,.18)!important;border-color:var(--blue)!important;
+ }
+ .btn,.github-btn,.contact-row a,.socials a,.icon-btn,.section-head>a,.project-links a,.certificate-info>a,.navlinks a{
+   display:inline-flex;align-items:center;
+   transition:transform .28s cubic-bezier(.16,1,.3,1),color .25s,border-color .25s,background-color .25s!important;
+ }
+ .btn:hover,.github-btn:hover,.contact-row a:hover,.socials a:hover,.icon-btn:hover{transform:translateY(-5px)!important}
+ .section-head>a:hover,.project-links a:hover,.certificate-info>a:hover{transform:translateX(5px)!important}
+ .tags span{display:inline-block;transition:transform .25s,border-color .25s,background .25s!important}
+ .tags span:hover{transform:translateY(-5px) scale(1.07)!important;border-color:var(--blue)!important}
+ .tech:hover .tech-logo img{transform:translateY(-5px) scale(1.13)!important}
+ .workflow-card,.workflow-card:hover{transform:none!important;box-shadow:none!important;transition:none!important}
+}
+
+/* Cursor and hover outline: one authoritative implementation. */
+#fmCursor{position:fixed!important;left:0;top:0;width:52px;height:52px;display:none;opacity:0;pointer-events:none;z-index:2147483647;transform:translate3d(-100px,-100px,0) translate(-50%,-50%);transition:opacity .12s;will-change:transform}
+#fmCursor.is-visible{opacity:1}
+#fmCursor .fm-crosshair{display:block;width:52px;height:52px;animation:fmSpin 4s linear infinite;transform-origin:50% 50%;filter:drop-shadow(0 0 4px rgba(22,134,255,.65))}
+#fmCursor.is-clicking .fm-crosshair{animation-duration:1.6s}
+@keyframes fmSpin{to{transform:rotate(360deg)}}
+#fmHoverFrame{position:fixed;left:0;top:0;width:48px;height:48px;opacity:0;pointer-events:none;z-index:2147483646;transform:translate3d(-100px,-100px,0);transition:transform .28s cubic-bezier(.2,.8,.2,1),width .28s cubic-bezier(.2,.8,.2,1),height .28s cubic-bezier(.2,.8,.2,1),opacity .18s;will-change:transform,width,height}
+#fmHoverFrame.shown{opacity:1}
+#fmHoverFrame .corner{position:absolute;width:14px;height:14px;border:0 solid #1686ff;filter:drop-shadow(0 0 4px rgba(22,134,255,.6))}
+#fmHoverFrame .tl{left:0;top:0;border-left-width:2px;border-top-width:2px}
+#fmHoverFrame .tr{right:0;top:0;border-right-width:2px;border-top-width:2px}
+#fmHoverFrame .bl{left:0;bottom:0;border-left-width:2px;border-bottom-width:2px}
+#fmHoverFrame .br{right:0;bottom:0;border-right-width:2px;border-bottom-width:2px}
+@media(hover:hover) and (pointer:fine){html.fm-custom-cursor,html.fm-custom-cursor body,html.fm-custom-cursor body *,html.fm-custom-cursor body *::before,html.fm-custom-cursor body *::after{cursor:none!important}html.fm-custom-cursor #fmCursor{display:block}}
+@media(hover:none),(pointer:coarse){#fmCursor,#fmHoverFrame{display:none!important}}
+@media(prefers-reduced-motion:reduce){#fmCursor .fm-crosshair{animation:none}#fmHoverFrame{transition:none}}
+
+#fxCursor{position:fixed;left:0;top:0;width:52px;height:52px;display:none;opacity:0;pointer-events:none;z-index:2147483647;transform:translate3d(-200px,-200px,0) translate(-50%,-50%);transition:opacity .12s;will-change:transform}
+#fxCursor svg{display:block;width:52px;height:52px;transform-origin:center;animation:fxClockwise 3.2s linear infinite;filter:drop-shadow(0 0 5px rgba(22,134,255,.6))}
+@keyframes fxClockwise{to{transform:rotate(360deg)}}
+#fxFrame{position:fixed;top:0;left:0;width:52px;height:52px;pointer-events:none;z-index:2147483646;opacity:0;transform:translate3d(-200px,-200px,0);transition:transform .35s cubic-bezier(.18,.8,.2,1),width .35s cubic-bezier(.18,.8,.2,1),height .35s cubic-bezier(.18,.8,.2,1),opacity .16s;will-change:transform,width,height}
+#fxFrame i{position:absolute;width:14px;height:14px;border:0 solid #1686FF;filter:drop-shadow(0 0 3px rgba(22,134,255,.5))}
+#fxFrame .tl{top:0;left:0;border-top-width:2px;border-left-width:2px}
+#fxFrame .tr{top:0;right:0;border-top-width:2px;border-right-width:2px}
+#fxFrame .bl{bottom:0;left:0;border-bottom-width:2px;border-right-width:2px}
+#fxFrame .br{bottom:0;right:0;border-bottom-width:2px;border-right-width:2px}
+@media(hover:hover) and (pointer:fine){
+html.fx-enabled,html.fx-enabled body,html.fx-enabled body *,html.fx-enabled body *::before,html.fx-enabled body *::after{cursor:none!important}
+html.fx-enabled #fxCursor{display:block}
+html.fx-enabled #fxCursor.fx-visible{opacity:1}
+html.fx-enabled #fxFrame.fx-visible{opacity:1}
+}
+@media(hover:none),(pointer:coarse){#fxCursor,#fxFrame{display:none!important}}
+@media(prefers-reduced-motion:reduce){#fxCursor svg{animation:none}#fxFrame{transition:none}}
+/* Restore browser-native cursor, including all clickable controls. */
+html,body,body *{cursor:auto!important}
+a,button,[role="button"],input[type="button"],input[type="submit"],.btn,.tech,.project,.certificate-card,.tags span{cursor:pointer!important}
+input,textarea,[contenteditable="true"]{cursor:text!important}
+</style></head><body><svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+<symbol id="li-instagram" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></symbol>
+<symbol id="li-send" viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></symbol>
+<symbol id="li-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></symbol>
+<symbol id="li-github" viewBox="0 0 24 24"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 19 4.77 5.07 5.07 0 0 0 18.91 1S17.73.65 15 2.48a13.38 13.38 0 0 0-7 0C5.27.65 4.09 1 4.09 1A5.07 5.07 0 0 0 4 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 8 18.13V22"/></symbol>
+<symbol id="li-code" viewBox="0 0 24 24"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6m6-16-4 20"/></symbol>
+<symbol id="li-braces" viewBox="0 0 24 24"><path d="M8 3H7a2 2 0 0 0-2 2v4a2 2 0 0 1-2 2 2 2 0 0 1 2 2v4a2 2 0 0 0 2 2h1m8-16h1a2 2 0 0 1 2 2v4a2 2 0 0 0 2 2 2 2 0 0 0-2 2v4a2 2 0 0 1-2 2h-1"/></symbol>
+<symbol id="li-database" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5M3 12a9 3 0 0 0 18 0"/></symbol>
+<symbol id="li-layers" viewBox="0 0 24 24"><path d="m12 2 9 5-9 5-9-5 9-5Zm-9 10 9 5 9-5M3 17l9 5 9-5"/></symbol>
+<symbol id="li-box" viewBox="0 0 24 24"><path d="m12 2 9 5-9 5-9-5 9-5Zm-9 5v10l9 5 9-5V7m-9 5v10"/></symbol>
+<symbol id="li-terminal" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="m6 9 4 3-4 3m7 0h5"/></symbol>
+<symbol id="li-file-code" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Zm0 0v6h6m-11 5-2 2 2 2m6-4 2 2-2 2"/></symbol>
+<symbol id="li-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></symbol>
+<symbol id="li-cpu" viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v4m6-4v4M9 19v4m6-4v4M1 9h4m-4 6h4m14-6h4m-4 6h4"/></symbol>
+<symbol id="li-atom" viewBox="0 0 24 24"><circle cx="12" cy="12" r="1"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(45 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(-45 12 12)"/></symbol>
+<symbol id="li-layout" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 9v12"/></symbol>
+<symbol id="li-monitor" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="15" rx="2"/><path d="M8 22h8m-4-4v4"/></symbol>
+<symbol id="li-arrow-up-right" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></symbol>
+</svg>
+<header><div class="wrap nav"><a class="brand" href="#home"><svg class="fm-mark" role="img" aria-label="FM logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+<path fill="#F5F9FF" d="M70 72h143l-21 46H120v65h69l-21 46h-48v99H70z"/>
+<path fill="#1686FF" d="M204 180l47 48 68-110v210h-48V227l-20 34-47-47v114h-46V153z"/>
+</svg><span>Fazil Məmmədzadə</span></a>
+<nav class="navlinks" id="navlinks"><a href="#home" class="active" data-i18n="navHome">Home</a><a href="#about" data-i18n="navAbout">About</a><a href="#skills" data-i18n="navSkills">Skills</a><a href="#projects" data-i18n="navProjects">Projects</a><a href="#contact" data-i18n="navContact">Contact</a></nav>
+<div class="nav-actions"><div class="lang"><button id="enBtn" class="active">EN</button><button id="azBtn">AZ</button></div><button class="icon-btn" id="themeBtn" aria-label="Toggle color theme">◐</button><a class="github-btn" href="https://github.com/fazilmemmedzade" target="_blank" rel="noopener">GitHub ↗</a><button class="icon-btn menu-btn" id="menuBtn" aria-label="Open menu">☰</button></div></div></header>
+<main><section class="hero" id="home"><div class="grid-bg"></div><div class="wrap"><div class="reveal"><div class="eyebrow">Full-Stack .NET Developer</div><h1><span data-i18n="hello">Hello, I'm</span><br><span>Fazil Məmmədzadə</span></h1><p data-i18n="intro">I'm a developer from Azerbaijan focused on C#, ASP.NET Core, SQL Server, and building practical web applications, APIs, and business software.</p><div class="buttons"><a href="#projects" class="btn" data-i18n="viewWork">View My Work →</a><a href="#contact" class="btn outline" data-i18n="contactMe">Contact Me</a></div><div class="socials"><a href="https://www.instagram.com/fazil_memmedzade/" target="_blank" rel="noopener" aria-label="Instagram"><svg class="lucide" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#li-instagram"/></svg></a><a href="https://t.me/fazil_memmedzade" target="_blank" rel="noopener" aria-label="Telegram"><svg class="lucide" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#li-send"/></svg></a><a href="mailto:fazilmmmdzad48@gmail.com" aria-label="Email"><svg class="lucide" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#li-mail"/></svg></a><a href="https://github.com/fazilmemmedzade" target="_blank" rel="noopener" aria-label="GitHub"><svg class="lucide" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#li-github"/></svg></a></div></div>
+<div class="editor reveal"><div class="editor-bar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span class="tab">Program.cs</span></div><pre><span class="num">01</span>  <span class="kw">using</span> Microsoft.AspNetCore.Builder;
+<span class="num">02</span>  <span class="kw">using</span> Microsoft.Extensions.DependencyInjection;
+<span class="num">03</span>  <span class="kw">using</span> Microsoft.Extensions.Hosting;
+<span class="num">04</span>
+<span class="num">05</span>  <span class="kw">var</span> builder = WebApplication.<span class="method">CreateBuilder</span>(args);
+<span class="num">06</span>  builder.Services.<span class="method">AddControllers</span>();
+<span class="num">07</span>  builder.Services.<span class="method">AddEndpointsApiExplorer</span>();
+<span class="num">08</span>  builder.Services.<span class="method">AddSwaggerGen</span>();
+<span class="num">09</span>
+<span class="num">10</span>  <span class="kw">var</span> app = builder.<span class="method">Build</span>();
+<span class="num">11</span>  app.<span class="method">UseSwagger</span>();
+<span class="num">12</span>  app.<span class="method">UseSwaggerUI</span>();
+<span class="num">13</span>  app.<span class="method">MapControllers</span>();
+<span class="num">14</span>  app.<span class="method">Run</span>();</pre><span class="editor-label">Build<br>Develop<br>Create<br>Repeat</span></div></div></section>
+<section class="section tech-section" id="skills"><div class="wrap"><div class="tech-label" data-i18n="techTitle">TECHNOLOGIES I WORK WITH</div><div class="tech-grid" id="techGrid"></div></div></section>
+<section class="section" id="projects"><div class="wrap"><div class="section-head reveal"><h2 data-i18n="featured">Featured Projects</h2><a href="https://github.com/fazilmemmedzade?tab=repositories" target="_blank" rel="noopener" data-i18n="allProjects">View All Projects →</a></div><div class="projects" id="projectGrid"></div></div></section>
+
+<section class="section" id="expertise"><div class="wrap"><div class="section-head reveal"><h2>Technical expertise</h2></div><div class="expertise-grid">
+<article class="expertise-card reveal"><small>01 / BACKEND</small><h3>C# & ASP.NET Core</h3><p>API development, application logic, MVC architecture, authentication and server-side integrations.</p><span>Web API · MVC · JWT · LINQ</span></article>
+<article class="expertise-card reveal"><small>02 / DATABASES</small><h3>Data architecture</h3><p>SQL Server, Entity Framework Core, data modeling, queries and database-driven applications.</p><span>SQL Server · EF Core · SQLite</span></article>
+<article class="expertise-card reveal"><small>03 / FRONTEND</small><h3>Web development</h3><p>Responsive interfaces, JavaScript interactions and frontend integration with backend services.</p><span>HTML · CSS · JavaScript · React</span></article>
+</div></div></section>
+<section class="section section-alt" id="workflow"><div class="wrap"><div class="section-head reveal"><h2>Development workflow</h2></div><div class="workflow-grid">
+<div class="workflow-card reveal"><b>01</b><h3>Plan</h3><p>Understand requirements and design the data model.</p></div>
+<div class="workflow-card reveal"><b>02</b><h3>Develop</h3><p>Build APIs, business logic and the user interface.</p></div>
+<div class="workflow-card reveal"><b>03</b><h3>Test</h3><p>Check functionality, edge cases and usability.</p></div>
+<div class="workflow-card reveal"><b>04</b><h3>Improve</h3><p>Refine code structure, performance and maintainability.</p></div></div></div></section>
+<section class="section" id="certificates"><div class="wrap"><div class="section-head reveal"><h2>Certificates &amp; education</h2></div>
+<div class="certificate-grid">
+<article class="certificate-card reveal"><a class="certificate-preview" href="https://github.com/fazilmemmedzade/portfolio/blob/main/AspDotNetCertificate.png" target="_blank" rel="noopener noreferrer" aria-label="View ASP.NET Core certificate"><img loading="lazy" src="https://raw.githubusercontent.com/fazilmemmedzade/portfolio/main/AspDotNetCertificate.png" alt="ASP.NET Core course certificate" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="certificate-unavailable" hidden>View certificate on GitHub ↗</span></a><div class="certificate-info"><small>01 / CERTIFICATE</small><h3>Web Development with ASP.NET Core</h3><a href="https://github.com/fazilmemmedzade/portfolio/blob/main/AspDotNetCertificate.png" target="_blank" rel="noopener noreferrer">View certificate ↗</a></div></article>
+<article class="certificate-card reveal"><a class="certificate-preview" href="https://github.com/fazilmemmedzade/portfolio/blob/main/CsCertificate.png" target="_blank" rel="noopener noreferrer" aria-label="View C# certificate"><img loading="lazy" src="https://raw.githubusercontent.com/fazilmemmedzade/portfolio/main/CsCertificate.png" alt="C# course certificate" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="certificate-unavailable" hidden>View certificate on GitHub ↗</span></a><div class="certificate-info"><small>02 / CERTIFICATE</small><h3>C# Beginner and Advanced</h3><a href="https://github.com/fazilmemmedzade/portfolio/blob/main/CsCertificate.png" target="_blank" rel="noopener noreferrer">View certificate ↗</a></div></article>
+<article class="certificate-card reveal"><a class="certificate-preview" href="https://github.com/fazilmemmedzade/portfolio/blob/main/HtmlCssJsCertificate.png" target="_blank" rel="noopener noreferrer" aria-label="View HTML CSS JavaScript certificate"><img loading="lazy" src="https://raw.githubusercontent.com/fazilmemmedzade/portfolio/main/HtmlCssJsCertificate.png" alt="HTML CSS JavaScript course certificate" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="certificate-unavailable" hidden>View certificate on GitHub ↗</span></a><div class="certificate-info"><small>03 / CERTIFICATE</small><h3>HTML, CSS and JavaScript</h3><a href="https://github.com/fazilmemmedzade/portfolio/blob/main/HtmlCssJsCertificate.png" target="_blank" rel="noopener noreferrer">View certificate ↗</a></div></article>
+</div></div></section>
+
+<section class="section about" id="about"><div class="wrap about-grid"><div class="reveal"><div class="section-head"><h2 data-i18n="aboutTitle">About Me</h2></div><p data-i18n="aboutText">I'm a student and developer from Azerbaijan with a strong interest in backend development and software architecture. I enjoy building structured, maintainable applications and learning new technologies through practical projects.</p><div class="facts"><div class="fact"><small data-i18n="locationLabel">Location</small><strong>Azerbaijan</strong></div><div class="fact"><small data-i18n="focusLabel">Focus</small><strong>Backend / .NET</strong></div><div class="fact"><small data-i18n="experienceLabel">Experience</small><strong data-i18n="experienceValue">3 years learning & building</strong></div></div></div><div class="about-visual reveal"><svg class="fm-mark" role="img" aria-label="FM logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+<path fill="#F5F9FF" d="M70 72h143l-21 46H120v65h69l-21 46h-48v99H70z"/>
+<path fill="#1686FF" d="M204 180l47 48 68-110v210h-48V227l-20 34-47-47v114h-46V153z"/>
+</svg><span>Clean code. Real solutions.</span></div></div></section>
+<section class="section contact" id="contact"><div class="wrap reveal"><div class="section-head"><h2 data-i18n="touchTitle">Get In Touch</h2></div><p data-i18n="touchText">Feel free to reach out for collaborations, questions, or just to connect.</p><div class="contact-row"><a href="https://www.instagram.com/fazil_memmedzade/" target="_blank" rel="noopener"><svg class="lucide" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#li-instagram"/></svg> &nbsp; Instagram ↗</a><a href="https://t.me/fazil_memmedzade" target="_blank" rel="noopener"><svg class="lucide" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#li-send"/></svg> &nbsp; Telegram ↗</a><a href="mailto:fazilmmmdzad48@gmail.com"><svg class="lucide" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#li-mail"/></svg> &nbsp; Email ↗</a><a href="https://github.com/fazilmemmedzade" target="_blank" rel="noopener"><svg class="lucide" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#li-github"/></svg> &nbsp; GitHub ↗</a></div></div></section></main>
+<footer><div class="wrap"><span>© <span id="year"></span> Fazil Məmmədzadə</span><span>Designed with clarity & purpose.</span></div></footer>
+<script>
+const techs=[
+['HTML','html5/html5-original.svg'],['CSS','css3/css3-original.svg'],['JavaScript','javascript/javascript-original.svg'],
+['React','react/react-original.svg'],['Bootstrap','bootstrap/bootstrap-original.svg'],
+['Tailwind CSS','tailwindcss/tailwindcss-original.svg'],['jQuery','jquery/jquery-original.svg'],
+['C#','csharp/csharp-original.svg'],['.NET','dotnetcore/dotnetcore-original.svg'],
+['SQL Server','microsoftsqlserver/microsoftsqlserver-plain.svg'],
+['SQLite','sqlite/sqlite-original.svg'],['MongoDB','mongodb/mongodb-original.svg']
+];
+document.getElementById('techGrid').innerHTML=techs.map(([name,path])=>{
+ const initials=({'JavaScript':'JS','Bootstrap':'B','Tailwind CSS':'TW','SQL Server':'SQL','MongoDB':'MDB','SQLite':'SQLi'}[name]||name);
+ return `<div class="tech"><div class="tech-logo"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${path}" alt="${name} logo" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="tech-fallback" hidden>${initials}</span></div><span>${name}</span></div>`;
+}).join('');
+const projects=[
+{key:'refactor',name:'RefactorAI',url:'https://github.com/fazilmemmedzade/RefactorAI',demo:'https://fazilmemmedzade.github.io/RefactorAI/',img:'https://raw.githubusercontent.com/fazilmemmedzade/My-Files/main/Answer.png',tags:['React 18','JavaScript']},
+{key:'flight',name:'Flight Booking',url:'https://github.com/fazilmemmedzade/FlightBooking',img:'https://raw.githubusercontent.com/fazilmemmedzade/My-Files/main/FlightBooking.png',tags:['ASP.NET Core','ML.NET']},
+{key:'blog',name:'Blog App',url:'https://github.com/fazilmemmedzade/BlogApp',img:'https://raw.githubusercontent.com/fazilmemmedzade/My-Files/main/BlogApp.png',tags:['ASP.NET Core','SQL Server']},
+{key:'degrees',name:'Honey Degrees',url:'https://github.com/fazilmemmedzade/Temperature_Transducer',img:'https://raw.githubusercontent.com/fazilmemmedzade/Temperature_Transducer/main/Annotation%202026-06-30%2008371333.png',tags:['C#','Windows Forms']},
+{key:'photo',name:'Honey Photo',url:'https://github.com/fazilmemmedzade/HoneyPhoto',img:'https://raw.githubusercontent.com/fazilmemmedzade/HoneyPhoto/master/Annotation%202026-06-30%2008394533.png',tags:['C#','Windows Forms']},
+{key:'meeting',name:'Meeting App',url:'https://github.com/fazilmemmedzade/MeetingApp',img:'https://raw.githubusercontent.com/fazilmemmedzade/My-Files/main/Meeting4.png',tags:['ASP.NET Core','MVC']}
+];
+const dict={
+en:{navHome:'Home',navAbout:'About',navSkills:'Skills',navProjects:'Projects',navContact:'Contact',hello:"Hello, I'm",intro:"I'm a developer from Azerbaijan focused on C#, ASP.NET Core, SQL Server, and building practical web applications, APIs, and business software.",viewWork:'View My Work →',contactMe:'Contact Me',techTitle:'TECHNOLOGIES I WORK WITH',featured:'Featured Projects',allProjects:'View All Projects →',aboutTitle:'About Me',aboutText:"I'm a student and developer from Azerbaijan with a strong interest in backend development and software architecture. I enjoy building structured, maintainable applications and learning new technologies through practical projects.",locationLabel:'Location',focusLabel:'Focus',experienceLabel:'Experience',experienceValue:'3 years learning & building',touchTitle:'Get In Touch',touchText:'Feel free to reach out for collaborations, questions, or just to connect.',code:'Code →',demo:'Live Demo ↗',desc:{refactor:'An AI-powered developer assistant for programming questions, code analysis, debugging, and refactoring.',flight:'A flight reservation system with booking, check-in, administration, and machine learning-based predictions.',blog:'A blogging platform with posts, profiles, following, likes, and comments.',degrees:'A desktop temperature converter for Celsius, Fahrenheit, and Kelvin.',photo:'A Windows desktop application for viewing, editing, resizing, and converting images.',meeting:'A web application for meeting participant registration and attendance status.'}},
+az:{navHome:'Ana səhifə',navAbout:'Haqqımda',navSkills:'Bacarıqlar',navProjects:'Layihələr',navContact:'Əlaqə',hello:'Salam, mən',intro:'C#, ASP.NET Core və SQL Server texnologiyalarına fokuslanan, veb tətbiqləri, API-lər və biznes proqramları hazırlayan Azərbaycandan bir developerəm.',viewWork:'Layihələrim →',contactMe:'Əlaqə saxla',techTitle:'İŞLƏDİYİM TEXNOLOGİYALAR',featured:'Seçilmiş layihələr',allProjects:'Bütün layihələr →',aboutTitle:'Haqqımda',aboutText:'Azərbaycandan olan tələbə və developerəm. Backend development və proqram təminatı arxitekturasına maraq göstərirəm. Strukturlaşdırılmış, dəstəklənə bilən tətbiqlər hazırlamağı və real layihələrlə öyrənməyi sevirəm.',locationLabel:'Məkan',focusLabel:'İxtisas',experienceLabel:'Təcrübə',experienceValue:'3 il öyrənmə və layihələr',touchTitle:'Əlaqə',touchText:'Əməkdaşlıq, suallar və ya sadəcə tanışlıq üçün mənimlə əlaqə saxlaya bilərsiniz.',code:'Kod →',demo:'Canlı demo ↗',desc:{refactor:'Proqramlaşdırma sualları, kod analizi, debugging və refactoring üçün AI developer köməkçisi.',flight:'Bilet rezervasiyası, check-in, idarəetmə və machine learning proqnozları olan aviasiya sistemi.',blog:'Yazılar, profillər, izləmə, bəyənmə və şərhlər olan bloq platforması.',degrees:'Selsi, Faranheyt və Kelvin arasında çevirmə üçün masaüstü proqram.',photo:'Şəkillərə baxmaq, onları redaktə etmək, ölçüsünü dəyişmək və çevirmək üçün Windows proqramı.',meeting:'Görüş iştirakçılarının qeydiyyatı və iştirak statusu üçün veb tətbiqi.'}}
+};
+const safeStorage={getItem(k){try{return window.localStorage.getItem(k)}catch{return null}},setItem(k,v){try{window.localStorage.setItem(k,v)}catch{}}};
+let lang=safeStorage.getItem('portfolio-lang')||'en';
+function renderProjects(){const d=dict[lang];document.getElementById('projectGrid').innerHTML=projects.map(p=>`<article class="project reveal"><div class="project-image"><img loading="lazy" src="${p.img}" alt="${p.name} screenshot" onerror="this.onerror=null;this.src='assets/${p.key==='refactor'?'refactorai':p.key==='flight'?'flight-booking':p.key==='blog'?'blog-app':p.key==='degrees'?'honey-degrees':p.key==='photo'?'honey-photo':'meeting-app'}.svg'"><div class="image-fallback">${p.name} · Screenshot unavailable</div></div><h3>${p.name}</h3><p>${d.desc[p.key]}</p><div class="tags">${p.tags.map(t=>`<span>${t}</span>`).join('')}</div><div class="project-links"><a href="${p.url}" target="_blank" rel="noopener">${d.code}</a>${p.demo?`<a href="${p.demo}" target="_blank" rel="noopener">${d.demo}</a>`:''}</div></article>`).join('');observe();}
+function setLang(l){lang=l;safeStorage.setItem('portfolio-lang',l);document.documentElement.lang=l;document.querySelectorAll('[data-i18n]').forEach(el=>{const v=dict[l][el.dataset.i18n];if(v)el.textContent=v});document.getElementById('enBtn').classList.toggle('active',l==='en');document.getElementById('azBtn').classList.toggle('active',l==='az');renderProjects()}
+const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}}),{threshold:.08});
+function observe(){document.querySelectorAll('.reveal:not(.visible)').forEach(el=>observer.observe(el))}
+document.getElementById('enBtn').onclick=()=>setLang('en');document.getElementById('azBtn').onclick=()=>setLang('az');
+const themeBtn=document.getElementById('themeBtn');function setTheme(t){document.body.classList.toggle('light',t==='light');safeStorage.setItem('portfolio-theme',t)}setTheme(safeStorage.getItem('portfolio-theme')||'dark');themeBtn.onclick=()=>setTheme(document.body.classList.contains('light')?'dark':'light');
+document.getElementById('menuBtn').onclick=()=>document.getElementById('navlinks').classList.toggle('open');document.querySelectorAll('.navlinks a').forEach(a=>a.onclick=()=>document.getElementById('navlinks').classList.remove('open'));document.getElementById('year').textContent=new Date().getFullYear();setLang(lang);observe();
+
+// A restrained mouse-follow highlight on interactive content cards.
+(function(){
+ if(!matchMedia('(hover:hover) and (pointer:fine)').matches)return;
+ document.addEventListener('pointermove',e=>{
+  const card=e.target.closest('.project,.certificate-card,.expertise-card,.editor,.about-visual');
+  if(!card)return;
+  const r=card.getBoundingClientRect();
+  card.style.setProperty('--mx',((e.clientX-r.left)/r.width*100).toFixed(1)+'%');
+  card.style.setProperty('--my',((e.clientY-r.top)/r.height*100).toFixed(1)+'%');
+ },{passive:true});
+})();
+</script></body></html>
